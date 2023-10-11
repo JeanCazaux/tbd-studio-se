@@ -382,4 +382,9 @@ public class Spark34xDistribution extends AbstractSparkDistribution
     public boolean doSupportHive1Standalone() {
         return false;
     }
+    
+    @Override
+    public boolean isHiveMRRequired() {
+    	return true;
+    }
 }
