@@ -3,9 +3,14 @@
     "HD_WEBHCAT_PORT": "443", 
     "HD_WEBHCAT_USERNAME": "admin", 
     "HD_INSIGHT_USERNAME": "admin",
-	"HD_AZURE_HOSTNAME": "storage.blob.core.windows.net",
-	"HD_AZURE_CONTAINER": "clustername",
-	"HD_AZURE_USERNAME": "storage",
-	"HD_AZURE_DEPLOYBOLB": "D:\\blobdir",
-	"HD_JOB_RESULT_FOLDER": "D:\\hdJobResult"
+    "HD_AZURE_HOSTNAME": "storage.blob.core.windows.net",
+    "HD_AZURE_CONTAINER": "clustername",
+    "HD_AZURE_USERNAME": "storage",
+    "HD_AZURE_DEPLOYBOLB": "",
+    "HD_JOB_RESULT_FOLDER": ""
+    "HDI_DIRECTORY_ID": "XXXX-XXXX-XXXX-XXXX-XXXX",
+    "HDI_APPLICATION_ID": "XXXX-XXXX-XXXX-XXXX-XXXX",
+    "HDI_CLIENT_KEY": "",
+    "HDI_CLIENT_CERTIFICATE": "",
+
 }

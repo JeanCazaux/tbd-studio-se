@@ -1282,6 +1282,12 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         fsDeployBlob = new LabelledText(fsGroup, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), 1);
         fsUsername = new LabelledText(fsGroup, Messages.getString("HadoopClusterForm.text.azure.username"), 1);
         fsPassword = new LabelledText(fsGroup, Messages.getString("HadoopClusterForm.text.azure.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
+        hdiDirectoryId = new LabelledText(fsGroup,  Messages.getString("HadoopClusterForm.text.azure.directoryId"));
+        hdiClientId = new LabelledText(fsGroup,  Messages.getString("HadoopClusterForm.text.azure.clientId"));
+        useHdiCertificate = new LabelledCheckbox(fsGroup, Messages.getString("HadoopClusterForm.text.useHDICertButton"));
+        hdiClientKey = new LabelledText(fsGroup,  Messages.getString("HadoopClusterForm.text.azure.clientKey"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE);
+        String[] extensions = { "*.*" };
+        azureHdiCertificate = new LabelledFileField(fsGroup, Messages.getString("HadoopClusterForm.text.azure.clientCertificate"), extensions);
 
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME, hdiUsername);
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD, hdiPassword);
@@ -1292,6 +1298,11 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER, fsContainer);
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME, fsUsername);
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD, fsPassword);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_DIRECTORY_ID, hdiDirectoryId);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_APPLICATION_ID, hdiClientId);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_USE_HDI_CLIENT_CERTIFICATE, useHdiCertificate);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_KEY, hdiClientKey);
+        azureHdiCertificate.setText(StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_CERTIFICATE)));
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB, fsDeployBlob);
 
         String storageValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE));
@@ -2697,6 +2708,24 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         addBasicListener(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER);
         addBasicListener(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME);
         addBasicListener(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD);
+        addBasicListener(ConnParameterKeys.CONN_PARA_KEY_HDI_DIRECTORY_ID);
+        addBasicListener(ConnParameterKeys.CONN_PARA_KEY_HDI_APPLICATION_ID);
+        ((LabelledCheckbox) useHdiCertificate).addSelectionListener(new SelectionAdapter() {
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                updateSynapseFieldsVisibility();
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_USE_HDI_CLIENT_CERTIFICATE, Boolean.valueOf(((LabelledCheckbox) 	useHdiCertificate).getSelection()).toString());
+            }
+        });
+
+        addBasicListener(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_KEY);
+        azureClientCertificate.addModifyListener(new ModifyListener() {
+            @Override
+            public void modifyText(final ModifyEvent e) {
+                updateSynapseFieldsVisibility();
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_CERTIFICATE, azureClientCertificate.getText());
+            } });
+        
         addBasicListener(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB);
 
         hdiStorageType.getCombo().addSelectionListener(new SelectionAdapter() {
@@ -2771,6 +2800,17 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     }
 
     private void updateHDIFieldsVisibility() {
+    	boolean isAAD = EHDIAuthType.AAD.getDisplayName().equals(storageAuthType.getText());
+        boolean useCertificate = ((LabelledCheckbox) useHdiCertificate).getSelection() && isAAD;
+        boolean useClientKey = !((LabelledCheckbox) useHdiCertificate).getSelection() && isAAD;
+        fsUsername.setVisible(!isAAD, isAAD);
+        fsPassword.setVisible(!isAAD, isAAD);
+        hdiClientId.setVisible(isAAD, !isAAD);
+        hdiDirectoryId.setVisible(isAAD, !isAAD);
+        hdiClientKey.setVisible(useClientKey, !useClientKey);
+        useSynapseCertificate.setVisible(isAAD, !isAAD);
+        azureHdiCertificate.setVisible(useCertificate);
+        
         hdiGroup.layout();
         hdiGroup.getParent().layout();
         livyGroup.layout();
