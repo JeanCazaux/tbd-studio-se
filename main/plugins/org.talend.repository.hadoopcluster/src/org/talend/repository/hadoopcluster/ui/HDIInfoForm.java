@@ -44,6 +44,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
+import org.talend.hadoop.distribution.constants.synapse.EHDIAuthType;
 
 /**
  *
@@ -73,10 +74,18 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
     private LabelledText azureHostnameText;
 
     private LabelledText azureContainerText;
+    
+    private LabelledCombo storageAuthTypeCombo;
 
     private LabelledText azureUsernameText;
 
     private LabelledText azurePasswordText;
+    
+    private LabelledText azureClientIdText;
+
+    private LabelledText azureDirectoryIdText;
+
+    private LabelledText azureClientKeyText;
 
     private LabelledText azureDeployBlobText;
 
@@ -161,6 +170,19 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         } else {
             storageCombo.select(0);
         }
+        
+        String authModeValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_AUTH_MODE));
+        if (authModeValue != null) {
+        	ESynapseAuthType type = EHDIAuthType.getHDIAuthTypeByName(authModeValue, false);
+            if (type != null) {
+            	storageAuthTypeCombo.setText(type.getDisplayName());
+            } else {
+            	storageAuthTypeCombo.select(0);
+            }
+        } else {
+        	storageAuthTypeCombo.select(0);
+        }
+        
         storageUseTLSBtn.setSelection(Boolean.valueOf(StringUtils.trimToEmpty(
                 getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS))));
         String azureHostname = StringUtils
@@ -169,6 +191,9 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         String azureContainer = StringUtils
                 .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
+        
+        String credentialName = storageAuthTypeCombo.getText();
+        
         String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
                 ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         azureUsernameText.setText(azureUsername);
@@ -192,6 +217,9 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         whcJobResultFolderText.setReadOnly(readOnly);
         hdiUsernameText.setReadOnly(readOnly);
         hdiPasswordText.setReadOnly(readOnly);
+        azureClientIdText.setReadOnly(readOnly);
+        azureDirectoryIdText.setReadOnly(readOnly);
+        azureClientKeyText.setReadOnly(readOnly);
         storageUseTLSBtn.setEnabled(!readOnly);
         azureHostnameText.setReadOnly(readOnly);
         azureContainerText.setReadOnly(readOnly);
@@ -209,6 +237,9 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         whcJobResultFolderText.setEditable(isEditable);
         hdiUsernameText.setEditable(isEditable);
         hdiPasswordText.setEditable(isEditable);
+        azureClientIdText.setEditable(isEditable);
+        azureDirectoryIdText.setEditable(isEditable);
+        azureClientKeyText.setEditable(isEditable);
         storageCombo.setEnabled(isEditable);
         azureHostnameText.setEditable(isEditable);
         azureContainerText.setEditable(isEditable);

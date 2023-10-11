@@ -434,7 +434,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private LabelledText livyPort;
 
     private LabelledText livyUsername;
-
+  
     private LabelledText hdiUsername;
 
     private LabelledText hdiPassword;
@@ -442,10 +442,22 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     private LabelledText fsHostname;
 
     private LabelledText fsContainer;
-
+ 
+    private LabelledCombo hdiAuthType;
+    
     private LabelledText fsUsername;
 
     private LabelledText fsPassword;
+    
+    private LabelledWidget hdiClientId;
+
+    private LabelledWidget hdiDirectoryId;
+
+    private LabelledWidget hdiClientKey;
+
+    private LabelledWidget useHdiCertificate;
+
+    private LabelledFileField azureHdiCertificate;
 
     private LabelledText fsDeployBlob;
 

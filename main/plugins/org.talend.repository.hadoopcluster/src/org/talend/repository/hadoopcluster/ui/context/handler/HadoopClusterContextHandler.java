@@ -149,6 +149,10 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
                         break;
+                   case HDIAuthType:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_AUTH_MODE));
+                        break;    
                     case KeyAzuresUser:
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
@@ -157,6 +161,18 @@ public class HadoopClusterContextHandler extends AbstractRepositoryContextHandle
                         ConnectionContextHelper.createParameters(varList, paramName,
                                 conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD),
                                 JavaTypesManager.PASSWORD);
+                        break;
+                    case HDIClientId:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_APPLICATION_ID));
+                        break;  
+                    case HDIDirectoryId:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_DIRECTORY_ID));
+                        break;  
+                    case HDISecretKey:
+                        ConnectionContextHelper.createParameters(varList, paramName,
+                                conn.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_KEY));
                         break;
                     case KeyAzureDeployBlob:
                         ConnectionContextHelper.createParameters(varList, paramName,
