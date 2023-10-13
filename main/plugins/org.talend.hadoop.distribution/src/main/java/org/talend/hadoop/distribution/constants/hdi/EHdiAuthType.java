@@ -36,7 +36,7 @@ public enum EHdiAuthType {
     }
 
     public static List<String> getAllHdiAuthTypes() {
-        return getAllSynapseAuthTypes(true);
+        return getAllHdiAuthTypes(true);
     }
 
     public static List<String> getAllHdiAuthTypes(boolean display) {
