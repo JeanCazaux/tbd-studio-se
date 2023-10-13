@@ -1298,11 +1298,11 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER, fsContainer);
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME, fsUsername);
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD, fsPassword);
-        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_DIRECTORY_ID, hdiDirectoryId);
-        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_APPLICATION_ID, hdiClientId);
-        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_USE_HDI_CLIENT_CERTIFICATE, useHdiCertificate);
-        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_KEY, hdiClientKey);
-        azureHdiCertificate.setText(StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_CLIENT_CERTIFICATE)));
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DIRECTORY_ID, hdiDirectoryId);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_APPLICATION_ID, hdiClientId);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_USE_AZURE_CLIENT_CERTIFICATE, useHdiCertificate);
+        fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_KEY, hdiClientKey);
+        azureHdiCertificate.setText(StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_CERTIFICATE)));
         fieldByParamKey.put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB, fsDeployBlob);
 
         String storageValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE));
@@ -1315,7 +1315,6 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
 
         updateHDIFieldsVisibility();
     }
-
 
 
     private List<String> getRunSubmitModes() {

@@ -184,9 +184,6 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
                     StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD)));
         } else if (EHCatalogRepositoryToComponent.HDINSIGHT_STORAGE.getRepositoryValue().equals(value)) {
             return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE);
-        } else if (EHCatalogRepositoryToComponent.HDINSIGHT_STORAGE_USE_TLS.getRepositoryValue().equals(value)) {
-            return Boolean
-                    .valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS));
         } else if (EHCatalogRepositoryToComponent.WASB_HOST.getRepositoryValue().equals(value)) {
             return getRepositoryValueOfStringType(connection,
                     StringUtils.trimToEmpty(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME)));

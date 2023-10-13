@@ -75,6 +75,7 @@ public class SynapseInfoForm extends AbstractHadoopClusterInfoForm<HadoopCluster
     private LabelledText azureDeployBlobText;
 
     private Composite tuningComposite;
+    
     private LabelledText driverMemoryText;
     
     private LabelledText driverCoresText;

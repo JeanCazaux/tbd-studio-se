@@ -44,7 +44,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
-import org.talend.hadoop.distribution.constants.synapse.EHDIAuthType;
+import org.talend.hadoop.distribution.constants.hdi.EHdiAuthType;
 
 /**
  *
@@ -69,8 +69,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
 
     private LabelledCombo storageCombo;
 
-    private Button storageUseTLSBtn;
-
     private LabelledText azureHostnameText;
 
     private LabelledText azureContainerText;
@@ -86,6 +84,8 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
     private LabelledText azureDirectoryIdText;
 
     private LabelledText azureClientKeyText;
+    
+    private Button useHdiCertButton;
 
     private LabelledText azureDeployBlobText;
 
@@ -140,26 +140,25 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
             fillDefaults();
         }
 
-        String whcHostName = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
+        String whcHostName = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_HOSTNAME));
         whcHostnameText.setText(whcHostName);
-        String whcPort = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
+        String whcPort = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_PORT));
+                
         whcPortText.setText(whcPort);
-        String whcUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
+        String whcUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_USERNAME));
+                
         whcUsernameText.setText(whcUsername);
-        String whcJobResultFolder = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
+        String whcJobResultFolder = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_WEB_HCAT_JOB_RESULT_FOLDER));
+                
         whcJobResultFolderText.setText(whcJobResultFolder);
-        String hdiUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_HDI_USERNAME));
+        String hdiUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+                
         hdiUsernameText.setText(hdiUsername);
-        String hdiPassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
+        String hdiPassword = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
+                
         hdiPasswordText.setText(hdiPassword);
-        String azureHdinsightStorage = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE));
+        String azureHdinsightStorage = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE));
+                
         if (azureHdinsightStorage != null) {
             EHdinsightStorage storage = EHdinsightStorage.getHdinsightStorageByName(azureHdinsightStorage, false);
             if (storage != null) {
@@ -171,9 +170,9 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
             storageCombo.select(0);
         }
         
-        String authModeValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_AUTH_MODE));
+        String authModeValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_AUTH_MODE));
         if (authModeValue != null) {
-        	ESynapseAuthType type = EHDIAuthType.getHDIAuthTypeByName(authModeValue, false);
+        	EHdiAuthType type = EHdiAuthType.getHDIAuthTypeByName(authModeValue, false);
             if (type != null) {
             	storageAuthTypeCombo.setText(type.getDisplayName());
             } else {
@@ -183,25 +182,44 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         	storageAuthTypeCombo.select(0);
         }
         
-        storageUseTLSBtn.setSelection(Boolean.valueOf(StringUtils.trimToEmpty(
-                getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS))));
-        String azureHostname = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
+        String credentialName = storageAuthTypeCombo.getText();
+        String azureHostname = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
         azureHostnameText.setText(azureHostname);
-        String azureContainer = StringUtils
-                .trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
+       
+        String azureContainer = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
         
         String credentialName = storageAuthTypeCombo.getText();
         
-        String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
+        String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         azureUsernameText.setText(azureUsername);
-        String azurePassword = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
+        azureUsernameText.setVisible(EHdiAuthType.SECRETKEY.getDisplayName().equals(credentialName));
+
+        String azurePassword = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_PASSWORD));
         azurePasswordText.setText(azurePassword);
-        String azureDeployBlob = StringUtils.trimToEmpty(getConnection().getParameters().get(
-                ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
+        azureUsernameText.setVisible(EHdiAuthType.SECRETKEY.getDisplayName().equals(credentialName));
+        
+        String azureDirectoryId = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DIRECTORY_ID));
+        azureDirectoryIdText.setText(azureDirectoryId);
+        azureDirectoryIdText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName));
+        
+        String azureClientId = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_APPLICATION_ID));
+        azureClientIdText.setText(azureClientId);
+        azureClientIdText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName));
+        
+        boolean useHdi = Boolean.parseBoolean(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_USE_AZURE_CLIENT_CERTIFICATE));
+        useHdiCertButton.setSelection(useHdi);
+        useHdiCertButton.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName));
+        
+        String azureClientKey = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_KEY));
+        azureClientKeyText.setText(azureClientKey);
+        azureClientKeyText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && !useSynapseCertButton.getSelection());
+        
+        String azureClientCertificate = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_CERTIFICATE));
+        azureClientCertificateText.setText(azureClientCertificate);
+        azureClientCertificateText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && useSynapseCertButton.getSelection());
+               
+        String azureDeployBlob = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
         azureDeployBlobText.setText(azureDeployBlob);
 
         updatePasswordFields();
@@ -220,7 +238,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         azureClientIdText.setReadOnly(readOnly);
         azureDirectoryIdText.setReadOnly(readOnly);
         azureClientKeyText.setReadOnly(readOnly);
-        storageUseTLSBtn.setEnabled(!readOnly);
         azureHostnameText.setReadOnly(readOnly);
         azureContainerText.setReadOnly(readOnly);
         azureUsernameText.setReadOnly(readOnly);
@@ -270,9 +287,8 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         whcHostnameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.Livy.hostname"), 1); //$NON-NLS-1$
         whcPortText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.Livy.port"), 1); //$NON-NLS-1$
         whcUsernameText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.Livy.username"), 1); //$NON-NLS-1$
-        whcJobResultFolderText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.Livy.jobResultFolder"), //$NON-NLS-1$
-                1);
-
+        whcJobResultFolderText = new LabelledText(whcGroup, Messages.getString("HadoopClusterForm.text.Livy.jobResultFolder"), 1);//$NON-NLS-1$
+     
     }
 
     private void addInsightFields() {
@@ -299,10 +315,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
                 Messages.getString("HadoopClusterForm.text.azure.storage.tip"), //$NON-NLS-1$
                 EHdinsightStorage.getAllHdinsightStorageDisplayNames().toArray(new String[0]), 1, true);
 
-        storageUseTLSBtn = new Button(storagePartComposite, SWT.CHECK);
-        storageUseTLSBtn.setText(Messages.getString("HadoopClusterForm.text.azure.storageUseTLS")); //$NON-NLS-1$
-        storageUseTLSBtn.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 2, 1));
-
         Composite azurePartComposite = new Composite(azureGroup, SWT.NULL);
         GridLayout azurePartLayout = new GridLayout(4, false);
         azurePartLayout.marginWidth = 0;
@@ -317,8 +329,15 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         azurePasswordText = new LabelledText(azurePartComposite,
                 Messages.getString("HadoopClusterForm.text.azure.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); //$NON-NLS-1$
         azurePasswordText.getTextControl().setEchoChar('*');
-        azureDeployBlobText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), //$NON-NLS-1$
-                1);
+        
+        azureClientIdText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.clientId"), 1); //$NON-NLS-1$
+        azureDirectoryIdText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.applicationId"), 1); //$NON-NLS-1$
+       
+        azureClientKeyText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.password"), 1, SWT.PASSWORD | SWT.BORDER | SWT.SINGLE); 
+        azureClientKeyText.getTextControl().setEchoChar('*');
+         
+        azureDeployBlobText = new LabelledText(azurePartComposite, Messages.getString("HadoopClusterForm.text.azure.deployBlob"), 1); //$NON-NLS-1$
+                
     }
 
     private void addHadoopPropertiesFields() {
@@ -345,7 +364,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
             public void applyProperties(List<Map<String, Object>> properties) {
                 getConnection().setHadoopProperties(HadoopRepositoryUtil.getHadoopPropertiesJsonStr(properties));
             }
-
         };
         propertiesDialog.createPropertiesFields(hadoopPropertiesComposite);
     }
@@ -421,16 +439,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
             }
         });
 
-        storageUseTLSBtn.addSelectionListener(new SelectionAdapter() {
-
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS,
-                        String.valueOf(storageUseTLSBtn.getSelection()));
-                checkFieldsValue();
-            }
-        });
-
         azureHostnameText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -456,6 +464,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
                 checkFieldsValue();
             }
         });
+        
         azurePasswordText.addModifyListener(new ModifyListener() {
 
             @Override
@@ -464,6 +473,38 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
                 checkFieldsValue();
             }
         });
+        
+        azureClientIdText.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(final ModifyEvent e) {
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_APPLICATION_ID, azureClientIdText.getText());
+                checkFieldsValue();
+            }
+        });
+        
+        azureDirectoryIdText.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(final ModifyEvent e) {
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_DIRECTORY_ID, azureDirectoryIdText.getText());
+                checkFieldsValue();
+            }
+        });
+
+       azureClientKeyText.addModifyListener(new ModifyListener() {
+
+            @Override
+            public void modifyText(final ModifyEvent e) {
+                getConnection().getParameters().put(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_KEY, azureClientKeyText.getText());
+                checkFieldsValue();
+            }
+        });
+        
+        private Button useHdiCertButton;
+
+
+        
         azureDeployBlobText.addModifyListener(new ModifyListener() {
 
             @Override

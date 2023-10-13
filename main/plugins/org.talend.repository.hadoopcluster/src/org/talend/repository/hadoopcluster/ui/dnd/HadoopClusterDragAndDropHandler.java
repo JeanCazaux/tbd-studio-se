@@ -145,9 +145,6 @@ public class HadoopClusterDragAndDropHandler extends AbstractDragAndDropServiceH
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_HDI_PASSWORD));
         } else if (EParameterNameForComponent.PARA_NAME_HDINSIGHT_STORAGE.getName().equals(value)) {
             return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE);
-        } else if (EParameterNameForComponent.PARA_NAME_HDINSIGHT_STORAGE_USE_TLS.getName().equals(value)) {
-            return Boolean
-                    .valueOf(hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HDINSIGHT_STORAGE_USE_TLS));
         } else if (EParameterNameForComponent.PARA_NAME_WASB_HOST.getName().equals(value)) {
             return getRepositoryValueOfStringType(hcConnection,
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_HOSTNAME));
