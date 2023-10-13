@@ -108,6 +108,7 @@ import org.talend.repository.model.hadoopcluster.HadoopClusterConnectionItem;
 import org.talend.repository.model.hadoopcluster.impl.HadoopClusterConnectionImpl;
 import org.talend.repository.model.hadoopcluster.util.EncryptionUtil;
 import org.talend.hadoop.distribution.constants.synapse.ESynapseAuthType;
+import org.talend.hadoop.distribution.constants.hdinsight.EHdiAuthType;
 import org.talend.core.hadoop.version.EHdinsightStorage;
 
 /**
@@ -2799,7 +2800,7 @@ public class StandardHCInfoForm extends AbstractHadoopClusterInfoForm<HadoopClus
     }
 
     private void updateHDIFieldsVisibility() {
-    	boolean isAAD = EHDIAuthType.AAD.getDisplayName().equals(storageAuthType.getText());
+    	boolean isAAD = EHdiAuthType.AAD.getDisplayName().equals(storageAuthType.getText());
         boolean useCertificate = ((LabelledCheckbox) useHdiCertificate).getSelection() && isAAD;
         boolean useClientKey = !((LabelledCheckbox) useHdiCertificate).getSelection() && isAAD;
         fsUsername.setVisible(!isAAD, isAAD);

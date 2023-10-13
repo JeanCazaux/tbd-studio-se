@@ -44,7 +44,7 @@ import org.talend.repository.hadoopcluster.i18n.Messages;
 import org.talend.repository.hadoopcluster.ui.common.AbstractHadoopClusterInfoForm;
 import org.talend.repository.hadoopcluster.util.HCRepositoryUtil;
 import org.talend.repository.model.hadoopcluster.HadoopClusterConnection;
-import org.talend.hadoop.distribution.constants.hdi.EHdiAuthType;
+import org.talend.hadoop.distribution.constants.hdinsight.EHdiAuthType;
 
 /**
  *
