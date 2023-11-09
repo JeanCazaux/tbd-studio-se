@@ -29,6 +29,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.talend.commons.ui.swt.formtools.Form;
 import org.talend.commons.ui.swt.formtools.LabelledCombo;
+import org.talend.commons.ui.swt.formtools.LabelledFileField;
 import org.talend.commons.ui.swt.formtools.LabelledText;
 import org.talend.core.database.conn.ConnParameterKeys;
 import org.talend.core.hadoop.repository.HadoopRepositoryUtil;
@@ -174,7 +175,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         
         String authModeValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_AUTH_MODE));
         if (authModeValue != null) {
-        	EHdiAuthType type = EHdiAuthType.getHDIAuthTypeByName(authModeValue);
+        	EHdiAuthType type = EHdiAuthType.getHdiAuthTypeByDisplayName(authModeValue);
             if (type != null) {
             	storageAuthTypeCombo.setText(type.getDisplayName());
             } else {
