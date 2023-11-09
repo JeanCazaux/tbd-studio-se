@@ -213,11 +213,11 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         
         String azureClientKey = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_KEY));
         azureClientKeyText.setText(azureClientKey);
-        azureClientKeyText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && !useSynapseCertButton.getSelection());
+        azureClientKeyText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && !useHdiCertButton.getSelection());
         
         String azureClientCertificate = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CLIENT_CERTIFICATE));
         azureClientCertificateText.setText(azureClientCertificate);
-        azureClientCertificateText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && useSynapseCertButton.getSelection());
+        azureClientCertificateText.setVisible(EHdiAuthType.AAD.getDisplayName().equals(credentialName) && useHdiCertButton.getSelection());
                
         String azureDeployBlob = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_DEPLOY_BLOB));
         azureDeployBlobText.setText(azureDeployBlob);
