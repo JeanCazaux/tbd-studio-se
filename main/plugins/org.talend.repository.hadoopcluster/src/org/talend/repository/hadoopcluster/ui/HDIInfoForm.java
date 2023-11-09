@@ -86,6 +86,8 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
     private LabelledText azureClientKeyText;
     
     private Button useHdiCertButton;
+    
+    private LabelledFileField azureClientCertificateText;
 
     private LabelledText azureDeployBlobText;
 
@@ -172,7 +174,7 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
         
         String authModeValue = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_AUTH_MODE));
         if (authModeValue != null) {
-        	EHdiAuthType type = EHdiAuthType.getHDIAuthTypeByName(authModeValue, false);
+        	EHdiAuthType type = EHdiAuthType.getHDIAuthTypeByName(authModeValue);
             if (type != null) {
             	storageAuthTypeCombo.setText(type.getDisplayName());
             } else {
@@ -188,8 +190,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
        
         String azureContainer = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_CONTAINER));
         azureContainerText.setText(azureContainer);
-        
-        String credentialName = storageAuthTypeCombo.getText();
         
         String azureUsername = StringUtils.trimToEmpty(getConnection().getParameters().get(ConnParameterKeys.CONN_PARA_KEY_AZURE_USERNAME));
         azureUsernameText.setText(azureUsername);
@@ -501,9 +501,6 @@ public class HDIInfoForm extends AbstractHadoopClusterInfoForm<HadoopClusterConn
             }
         });
         
-        private Button useHdiCertButton;
-
-
         
         azureDeployBlobText.addModifyListener(new ModifyListener() {
 
