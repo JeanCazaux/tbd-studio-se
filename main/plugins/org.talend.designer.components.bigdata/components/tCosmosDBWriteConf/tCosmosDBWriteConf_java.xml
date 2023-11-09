@@ -333,9 +333,9 @@
 	</PARAMETERS>
 	<CODEGENERATION>
 		<IMPORTS>
-            <IMPORT MODULE="mongodb-driver-core-4.2.3.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.2.3" NAME="mongodb-driver-core-4.2.3" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
-            <IMPORT MODULE="mongodb-driver-sync-4.2.3.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.2.3" NAME="mongodb-driver-sync-4.2.3" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
-            <IMPORT MODULE="bson-4.2.3.jar" MVN="mvn:org.mongodb/bson/4.2.3" NAME="bson-4.2.3" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongodb-driver-core-4.10.2.jar" MVN="mvn:org.mongodb/mongodb-driver-core/4.10.2" NAME="mongodb-driver-core-4.10.2" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="mongodb-driver-sync-4.10.2.jar" MVN="mvn:org.mongodb/mongodb-driver-sync/4.10.2" NAME="mongodb-driver-sync-4.10.2" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
+            <IMPORT MODULE="bson-4.10.2.jar" MVN="mvn:org.mongodb/bson/4.10.2" NAME="bson-4.10.2" REQUIRED_IF="((USE_EXISTING_CONNECTION == 'false') AND ((API=='MONGODB') AND (DB_VERSION == 'MONGODB_4_4_X')))" />
             <IMPORT NAME="xom" MODULE="xom-1.2.7.jar" MVN="mvn:org.talend.libraries/xom-1.2.7/6.0.0"  REQUIRED="true" />
             <IMPORT NAME="commons_beanutils" MODULE="commons-beanutils-1.9.4.jar" MVN="mvn:commons-beanutils/commons-beanutils/1.9.4" REQUIRED="true" />
             <IMPORT NAME="commons_collections" MODULE="commons-collections-3.2.2.jar" MVN="mvn:commons-collections/commons-collections/3.2.2"  UrlPath="platform:/plugin/org.talend.libraries.apache.common/lib/commons-collections-3.2.2.jar" REQUIRED="true" />

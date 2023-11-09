@@ -91,52 +91,53 @@ public class MongoDBDNDProvider extends AbstractDNDProvider {
 
     @Override
     public void setRepositoryValue(NoSQLConnection connection, INode node, IElementParameter param) {
-        if (IMongoDBAttributes.DB_VERSION.equals(param.getRepositoryValue())) {
+        String repositoryValue = param.calcRepositoryValue();
+        if (IMongoDBAttributes.DB_VERSION.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.DB_VERSION, value);
             }
-        } else if (IMongoDBAttributes.HOST.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.HOST.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.HOST, value);
             }
-        } else if (IMongoDBAttributes.PORT.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.PORT.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.PORT, value);
             }
-        } else if (IMongoDBAttributes.DATABASE.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.DATABASE.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.DATABASE, value);
             }
-        } else if (IMongoDBAttributes.USE_REPLICA_SET.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.USE_REPLICA_SET.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.USE_REPLICA_SET, value);
             }
-        } else if (IMongoDBAttributes.REQUIRED_AUTHENTICATION.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.REQUIRED_AUTHENTICATION.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.REQUIRED_AUTHENTICATION, value);
             }
-        } else if (IMongoDBAttributes.AUTHENTICATION_MECHANISM.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.AUTHENTICATION_MECHANISM.equals(repositoryValue)) {
                 String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
                 if (value != null) {
                     connection.getAttributes().put(IMongoDBAttributes.AUTHENTICATION_MECHANISM, value);
                 }
-        } else if (IMongoDBAttributes.SET_AUTHENTICATION_DATABASE.equals(param.getRepositoryValue())) {
+            } else if (IMongoDBAttributes.SET_AUTHENTICATION_DATABASE.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.SET_AUTHENTICATION_DATABASE, value);
             }
-        } else if (IMongoDBAttributes.REPLICA_SET.equals(param.getRepositoryValue())) {
+        } else if (IMongoDBAttributes.REPLICA_SET.equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.REPLICA_SET, value);
             }
-        } else if ("USE_SSL".equals(param.getRepositoryValue())) { //$NON-NLS-1$
+        } else if ("USE_SSL".equals(repositoryValue)) { //$NON-NLS-1$
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.getAttributes().put(IMongoDBAttributes.REQUIRED_ENCRYPTION, value);

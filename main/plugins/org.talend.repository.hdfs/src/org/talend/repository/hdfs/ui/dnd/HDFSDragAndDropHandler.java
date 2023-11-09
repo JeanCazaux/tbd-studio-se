@@ -330,124 +330,125 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
             return;
         }
 
-        if (EHDFSRepositoryToComponent.DISTRIBUTION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        String repositoryValue = param.calcRepositoryValue();
+        if (EHDFSRepositoryToComponent.DISTRIBUTION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setDistribution(value);
             }
-        } else if (EHDFSRepositoryToComponent.DB_VERSION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.DB_VERSION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setDfVersion(value);
             }
-        } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.HADOOP_CUSTOM_JARS.getRepositoryValue().equals(repositoryValue)) {
             Object obj = param.getValue();
             if (obj != null) {
                 Map<String, Set<String>> customVersionMap = HCVersionUtil.getRepCustomJarsParamFromComp((String) obj,
                         ECustomVersionGroup.COMMON);
                 HCVersionUtil.injectCustomVersionMap(hcConnection, customVersionMap);
             }
-        } else if (EHDFSRepositoryToComponent.USE_YARN.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USE_YARN.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setUseYarn(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.AUTHENTICATION_MODE.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.AUTHENTICATION_MODE.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setAuthMode(value);
             }
-        } else if (EHDFSRepositoryToComponent.FS_DEFAULT_NAME.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.FS_DEFAULT_NAME.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setNameNodeURI(value);
             }
-        } else if (EHDFSRepositoryToComponent.USE_KRB.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USE_KRB.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setEnableKerberos(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.NAMENODE_PRINCIPAL.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.NAMENODE_PRINCIPAL.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setPrincipal(value);
             }
-        } else if (EHDFSRepositoryToComponent.USE_KEYTAB.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USE_KEYTAB.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setUseKeytab(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.KEYTAB_PRINCIPAL.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.KEYTAB_PRINCIPAL.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setKeytabPrincipal(value);
             }
-        } else if (EHDFSRepositoryToComponent.KEYTAB_PATH.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.KEYTAB_PATH.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setKeytab(value);
             }
-        } else if (EHDFSRepositoryToComponent.USERNAME.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USERNAME.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setUserName(value);
             }
-        } else if (EHDFSRepositoryToComponent.GROUP.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.GROUP.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setGroup(value);
             }
-        } else if (EHDFSRepositoryToComponent.ROWSEPARATOR.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.ROWSEPARATOR.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setRowSeparator(value);
             }
-        } else if (EHDFSRepositoryToComponent.FIELDSEPARATOR.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.FIELDSEPARATOR.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setFieldSeparator(value);
             }
-        } else if (EHDFSRepositoryToComponent.HEADER.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.HEADER.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setHeaderValue(value);
             }
-        } else if (EHDFSRepositoryToComponent.USE_MAPRTICKET.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USE_MAPRTICKET.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setEnableMaprT(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_PASSWORD.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_PASSWORD.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTPassword(value);
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_CLUSTER.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_CLUSTER.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTCluster(value);
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTDuration(value);
             }
-        } else if (EHDFSRepositoryToComponent.SET_MAPR_HOME_DIR.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.SET_MAPR_HOME_DIR.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setSetMaprTHomeDir(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.MAPR_HOME_DIR.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPR_HOME_DIR.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTHomeDir(value);
             }
-        } else if (EHDFSRepositoryToComponent.SET_HADOOP_LOGIN.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.SET_HADOOP_LOGIN.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setSetHadoopLogin(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.HADOOP_LOGIN.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.HADOOP_LOGIN.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTHadoopLogin(value);

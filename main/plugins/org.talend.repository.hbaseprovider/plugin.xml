@@ -24,10 +24,9 @@
          </DBType>
       </RepositoryComponent>
    </extension>
-      <extension
+   <extension
          point="org.talend.core.runtime.librariesNeeded">
-      </libraryNeeded>
-            <libraryNeeded
+      <libraryNeeded
             context="HBase wizard"
             language="java"
             message="Wizard use for HBase"

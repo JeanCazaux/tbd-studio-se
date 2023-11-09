@@ -291,52 +291,53 @@ public class HCatalogDragAndDropHandler extends AbstractDragAndDropServiceHandle
         if (hcConnection == null) {
             return;
         }
-        if (EHCatalogRepositoryToComponent.DISTRIBUTION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        String repositoryValue = param.calcRepositoryValue();
+        if (EHCatalogRepositoryToComponent.DISTRIBUTION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setDistribution(value);
             }
-        } else if (EHCatalogRepositoryToComponent.HCAT_VERSION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHCatalogRepositoryToComponent.HCAT_VERSION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setHcatVersion(value);
             }
-        } else if (EHCatalogRepositoryToComponent.TEMPLETON_HOST.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHCatalogRepositoryToComponent.TEMPLETON_HOST.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setHostName(value);
             }
-        } else if (EHCatalogRepositoryToComponent.TEMPLETON_PORT.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHCatalogRepositoryToComponent.TEMPLETON_PORT.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setPort(value);
             }
-        } else if (EHCatalogRepositoryToComponent.DATABASE_NAME.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHCatalogRepositoryToComponent.DATABASE_NAME.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setDatabase(value);
             }
-        } else if (EHCatalogRepositoryToComponent.USERNAME.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHCatalogRepositoryToComponent.USERNAME.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 connection.setUserName(value);
             }
-        } else if (EHDFSRepositoryToComponent.USE_MAPRTICKET.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.USE_MAPRTICKET.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(connection, node, param);
             if (value != null) {
                 hcConnection.setEnableMaprT(Boolean.valueOf(value));
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_PASSWORD.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_PASSWORD.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTPassword(value);
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_CLUSTER.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_CLUSTER.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTCluster(value);
             }
-        } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(param.getRepositoryValue())) {
+        } else if (EHDFSRepositoryToComponent.MAPRTICKET_DURATION.getRepositoryValue().equals(repositoryValue)) {
             String value = ComponentToRepositoryProperty.getParameterValue(hcConnection, node, param);
             if (value != null) {
                 hcConnection.setMaprTDuration(value);

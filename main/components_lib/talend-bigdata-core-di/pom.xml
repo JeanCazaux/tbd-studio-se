@@ -1,30 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.talend.bigdata.libs</groupId>
     <artifactId>talend-bigdata-core-di</artifactId>
     <packaging>jar</packaging>
-    <version>1.2.0</version>
+    <version>1.5.0</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <immutables.version>2.9.0</immutables.version>
+
+        <assertj.version>3.22.0</assertj.version>
         <hadoop.version>3.2.2</hadoop.version>
         <hbase-client.version>1.4.10</hbase-client.version>
-        <!-- Dependencies test version -->
+        <hive.version>2.3.8</hive.version>
+        <immutables.version>2.9.0</immutables.version>
         <junit.version>4.13.2</junit.version>
-        <assertj.version>3.22.0</assertj.version>
         <log4j.version>2.17.1</log4j.version>
+        <mockito.version>4.11.0</mockito.version>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.immutables</groupId>
             <artifactId>value</artifactId>
+            <version>${immutables.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.immutables</groupId>
+            <artifactId>value-fixture</artifactId>
             <version>${immutables.version}</version>
             <scope>provided</scope>
         </dependency>
@@ -62,7 +69,25 @@
             <version>${log4j.version}</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <classifier>standalone</classifier>
+            <version>${hive.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>Impala</groupId>
+            <artifactId>ImpalaJDBC42</artifactId>
+            <version>2.6.30.1036</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.iceberg</groupId>
+            <artifactId>iceberg-hive-metastore</artifactId>
+            <version>1.4.0</version>
+            <scope>provided</scope>
+        </dependency>
         <!-- ************************************************** -->
         <!-- Tests -->
         <!-- ************************************************** -->
@@ -78,9 +103,13 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -97,8 +126,30 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
             </plugin>
-
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>failsafe</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>3.1.2</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

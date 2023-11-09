@@ -7,14 +7,14 @@ import org.apache.hadoop.conf.Configuration;
 
 import java.io.IOException;
 import java.util.Map;
+import java.util.Optional;
 
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PUBLIC)
 public abstract class THbaseConnection {
     abstract boolean isUseExistingConnection();
-    abstract Map<String, Object> globalMap();
+    abstract Optional<Configuration> globalConfiguration();
     abstract Map<String, String> hBaseConfigurationOptions();
-    abstract String existingConnectionName();
     private Configuration configuration;
     private Connection connection = null;
 
@@ -26,10 +26,10 @@ public abstract class THbaseConnection {
                 configuration.set(entry.getKey(),entry.getValue());
             }
         } else {
-            String connString = "conn_" + existingConnectionName();
-            configuration = (org.apache.hadoop.conf.Configuration)globalMap().get(connString);
-            if(configuration == null){
-                throw new RuntimeException(connString+"'s connection is null!");
+            if (globalConfiguration().isPresent()){
+                configuration = globalConfiguration().get();
+            } else {
+                throw new RuntimeException("Configuration for HBase connection is null");
             }
         }
     }

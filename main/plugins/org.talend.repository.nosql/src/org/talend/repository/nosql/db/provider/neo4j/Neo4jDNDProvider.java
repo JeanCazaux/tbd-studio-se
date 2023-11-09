@@ -89,7 +89,7 @@ public class Neo4jDNDProvider extends AbstractDNDProvider {
         if (value == null) {
             return;
         }
-        String repositoryValue = param.getRepositoryValue();
+        String repositoryValue = param.calcRepositoryValue();
         if (INeo4jAttributes.REMOTE_SERVER.equals(repositoryValue)) {
             connection.getAttributes().put(INeo4jAttributes.REMOTE_SERVER, value);
         } else if (INeo4jAttributes.DATABASE_PATH.equals(repositoryValue)) {

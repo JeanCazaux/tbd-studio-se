@@ -1226,19 +1226,6 @@
           "childNodes": [
             {
               "childNodes": [],
-              "id": ":DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_core_di_1_2_0_jar",
-              "tagName": "library"
-            }
-          ],
-          "description": "",
-          "id": "DYNAMIC_HDP_3_1_4_12_1_TALEND_BIGDATA_CORE_DI_LIB",
-          "tagName": "libraryNeededGroup",
-          "templateId": "TALEND_BIGDATA_CORE_DI_LIB"
-        },
-        {
-          "childNodes": [
-            {
-              "childNodes": [],
               "id": "DYNAMIC_HDP_3_1_4_12_1_accessors_smart_1_2_jar",
               "tagName": "library"
             },
@@ -14401,14 +14388,6 @@
           "mvn_uri": "mvn:org.apache.hbase/hbase-zookeeper/2.0.2.3.1.4.12-1/jar",
           "name": "hbase-zookeeper-2.0.2.3.1.4.12-1.jar",
           "tagName": "libraryNeeded"
-        },{
-          "childNodes" : [ ],
-          "context" : "plugin:org.talend.hadoop.distribution.hdpx",
-          "excludeDependencies" : "true",
-          "id" : "DYNAMIC_HDP_3_1_4_12_1_talend_bigdata_core_di_1_2_0_jar",
-          "mvn_uri" : "mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.2.0/jar",
-          "name" : "talend-bigdata-core-di-1.2.0.jar",
-          "tagName" : "libraryNeeded"
         },{
           "childNodes": [],
           "context": "plugin:org.talend.hadoop.distribution.hdpx",

@@ -691,15 +691,6 @@
 					REQUIRED="false"
 					REQUIRED_IF="(USE_EXISTING_CONNECTION == 'false') AND (DISTRIBUTION!='CUSTOM') AND (USE_KRB=='true') AND (DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportKerberos[] AND ((DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportHive1[] AND DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportEmbeddedMode[] AND HIVE_SERVER=='HIVE' AND CONNECTION_MODE=='EMBEDDED') OR (DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportHive2[] AND HIVE_SERVER=='HIVE2')))"/>
 
-			<!-- PARQUET SUPPORT -->
-			<IMPORT NAME="parquet-hive-bundle-1.5.0" MODULE="parquet-hive-bundle-1.5.0.jar"
-				MVN="mvn:org.talend.libraries/parquet-hive-bundle-1.5.0/6.0.0"
-				UrlPath="platform:/plugin/org.talend.libraries.hadoop/lib/parquet-hive-bundle-1.5.0.jar"
-				REQUIRED_IF="(DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportOldImportMode[] AND (isShow[PARQUET_COMPRESSION]) AND (USE_EXISTING_CONNECTION=='false') AND (DISTRIBUTION!='CUSTOM'))" />
-			<IMPORT NAME="snappy-java-1.1.10.1.jar" MODULE="snappy-java-1.1.10.1.jar"
-				MVN="mvn:org.xerial.snappy/snappy-java/1.1.10.1"
-				REQUIRED_IF="((DISTRIB[DISTRIBUTION, HIVE_VERSION].doSupportOldImportMode[] AND isShow[PARQUET_COMPRESSION]) AND (USE_EXISTING_CONNECTION=='false') AND (PARQUET_COMPRESSION=='SNAPPY') AND (DISTRIBUTION!='CUSTOM'))" />
-			
 			<!-- Dataproc 2.x -->	
 			<IMPORT MODULE_GROUP="DATAPROC-LAUNCHER-DI" 
                    REQUIRED_IF="(USE_EXISTING_CONNECTION=='false') AND (CONNECTION_MODE=='DATAPROC')" REQUIRED="false"/>

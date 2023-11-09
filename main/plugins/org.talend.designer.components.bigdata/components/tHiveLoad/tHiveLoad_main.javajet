@@ -346,7 +346,7 @@ imports="
 %>
             }
 <%
-        } else if (theVersion.equals("DATAPROC")) { // dataproc
+        } else if ("DATAPROC".equals(connMode)) { // dataproc
             if(isLog4jEnabled) {
 %>
                 log.debug("Query for <%=cid%>: " + querySQL_<%=cid %>.replace("';'", "'\\;'") + ";");

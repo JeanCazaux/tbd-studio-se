@@ -2413,19 +2413,6 @@
             <library id="bigquery-connector-hadoop2-1.1.6-shaded.jar"/>
         </libraryNeededGroup>
 
-        <libraryNeeded
-                context="plugin:org.talend.hadoop.distribution.emr5290"
-                id="talend-bigdata-core-di-1.2.0.jar"
-                name="talend-bigdata-core-di-1.2.0.jar"
-                mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.2.0"/>
-
-        <libraryNeededGroup
-                description="Talend-bigdata-core-di group"
-                id="TALEND_BIGDATA_CORE_DI_LIB"
-                name="TALEND_BIGDATA_CORE_DI_LIB">
-            <library id="talend-bigdata-core-di-1.2.0.jar"/>
-        </libraryNeededGroup>
-
     </extension>
 
     <extension

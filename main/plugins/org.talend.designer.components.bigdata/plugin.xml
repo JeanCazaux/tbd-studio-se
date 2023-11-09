@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plugin [
         <!ENTITY google-oauth_version "1.33.3">
+        <!ENTITY hive_version "2.3.8">
         <!ENTITY zookeeper_version "3.4.14">
         ]>
 <?eclipse version="3.2"?>
@@ -327,15 +328,16 @@
         </libraryNeededGroup>
 
        <libraryNeeded
-               context="plugin:org.talend.designer.components.mrprovider"
-               id="talend-bigdata-core-di-1.2.0.jar"
-               name="talend-bigdata-core-di-1.2.0.jar"
-               mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.2.0"/>
+               context="plugin:org.talend.designer.components.bigdata"
+               id="talend-bigdata-core-di-1.5.0.jar"
+               name="talend-bigdata-core-di-1.5.0.jar"
+               mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.5.0"/>
 
        <libraryNeededGroup description="Talend-bigdata-core-di group" id="TALEND_BIGDATA_CORE_DI_LIB" name="TALEND_BIGDATA_CORE_DI_LIB">
-            <library id="talend-bigdata-core-di-1.2.0.jar"/>
+            <library id="talend-bigdata-core-di-1.5.0.jar"/>
+            <library id="guava-27.0-jre.jar"/>
        </libraryNeededGroup>
-      
+
       <libraryNeeded context="plugin:org.talend.designer.components.mrprovider" id="hbase-client-2.1.0.jar" name="hbase-client-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-client/2.1.0"/>
         <libraryNeeded context="plugin:org.talend.designer.components.mrprovider" id="hbase-common-2.1.0.jar" name="hbase-common-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-common/2.1.0"/>
         <libraryNeeded context="plugin:org.talend.designer.components.mrprovider" id="hbase-hadoop-compat-2.1.0.jar" name="hbase-hadoop-compat-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hadoop-compat/2.1.0"/>
@@ -405,9 +407,9 @@
         </libraryNeededGroup>
 
        <!-- Bigdata laucher group for Google Dataproc -->
-        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-core-2.4.6.jar" name="talend-bigdata-launcher-core-2.4.6.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.4.6"/>
-        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-dataproc-2.4.6.jar" name="talend-bigdata-launcher-dataproc-2.4.6.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.4.6"/>
-        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-jobserver-2.4.6.jar" name="talend-bigdata-launcher-jobserver-2.4.6.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.4.6"/>
+        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-core-2.7.1.jar" name="talend-bigdata-launcher-core-2.7.1.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-core/2.7.1"/>
+        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-dataproc-2.7.1.jar" name="talend-bigdata-launcher-dataproc-2.7.1.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-dataproc/2.7.1"/>
+        <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="talend-bigdata-launcher-jobserver-2.7.1.jar" name="talend-bigdata-launcher-jobserver-2.7.1.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-launcher-jobserver/2.7.1"/>
        
         <!-- Google Dataproc group -->
         <libraryNeeded context="plugin:org.talend.designer.components.bigdata" id="animal-sniffer-annotations-1.14.jar" name="animal-sniffer-annotations-1.14.jar" mvn_uri="mvn:org.codehaus.mojo/animal-sniffer-annotations/1.14"/>
@@ -518,9 +520,9 @@
             <library id="jackson-mapper-asl-1.9.16-TALEND.jar" />
             <library id="json-20230227.jar" />
             <library id="failureaccess-1.0.1.jar" />
-            <library id="talend-bigdata-launcher-dataproc-2.4.6.jar"/>
-            <library id="talend-bigdata-launcher-core-2.4.6.jar"/>
-            <library id="talend-bigdata-launcher-jobserver-2.4.6.jar"/>
+            <library id="talend-bigdata-launcher-dataproc-2.7.1.jar"/>
+            <library id="talend-bigdata-launcher-core-2.7.1.jar"/>
+            <library id="talend-bigdata-launcher-jobserver-2.7.1.jar"/>
         </libraryNeededGroup>
         
         <!-- Universal 3.1.X group -->
@@ -546,6 +548,6 @@
   			<library id="stax2-api-3.1.4.jar"/>
   			<library id="woodstox-core-6.4.0.jar" />
   	    </libraryNeededGroup>
-      
+
    </extension>
 </plugin>

@@ -57,8 +57,9 @@
 %>
 
 	// create hbase configuration
+	java.util.Optional<org.apache.hadoop.conf.Configuration> global_conf_<%=cid%> = java.util.Optional.ofNullable((org.apache.hadoop.conf.Configuration)globalMap.get("conn_"+"<%=thbase.getExistingConnection()%>"));
 org.talend.bigdata.core.di.components.hbase.ImmutableTHbaseConnection immutableTHbaseConnection = org.talend.bigdata.core.di.components.hbase.ImmutableTHbaseConnection.builder()
-.globalMap(globalMap)
+.globalConfiguration(global_conf_<%=cid%>)
 <%
 for (Map.Entry<String, String> entry : thbase.getConnectionConfiguration().entrySet()) {
 %>
@@ -66,7 +67,6 @@ for (Map.Entry<String, String> entry : thbase.getConnectionConfiguration().entry
 <%
 }
 %>
-.existingConnectionName("<%=thbase.getExistingConnection()%>")
 .isUseExistingConnection(<%=thbase.useExistingConnection()%>)
 .build();
 

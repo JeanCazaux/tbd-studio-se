@@ -126,7 +126,7 @@ public class Spark34xDistribution extends AbstractSparkDistribution
     @Override
     public Set<ESparkVersion> getSparkVersions() {
         Set<ESparkVersion> version = new HashSet<>();
-        version.add(ESparkVersion.SPARK_3_3);
+        version.add(ESparkVersion.SPARK_3_4);
         return version;
     }
 
@@ -157,7 +157,7 @@ public class Spark34xDistribution extends AbstractSparkDistribution
     
     @Override
     public boolean doSupportUniversalStandaloneMode() {
-        return false;
+        return true;
     }
 
     @Override
@@ -172,7 +172,7 @@ public class Spark34xDistribution extends AbstractSparkDistribution
 
     @Override
     public boolean doSupportSparkYarnClusterMode() {
-        return true;
+        return false;
     }
 
     @Override
