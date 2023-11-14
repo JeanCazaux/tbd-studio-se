@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.talend.repository.nosql;singleton:=true
 Bundle-Version: 8.0.1.qualifier
 Bundle-Activator: org.talend.repository.nosql.RepositoryNoSQLPlugin
 Bundle-ClassPath: .,
- lib/bcprov-jdk15on-1.70.jar
+ lib/bcprov-jdk18on-1.74.jar
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
