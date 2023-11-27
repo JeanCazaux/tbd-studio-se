@@ -31,9 +31,9 @@
                   <goal>copy-dependencies</goal>
                 </goals>
                 <configuration>
-				  <excludeGroupIds>org.talend.studio</excludeGroupIds>
 	              <includeScope>runtime</includeScope>
                   <outputDirectory>${project.basedir}/lib</outputDirectory>
+		  <excludeGroupIds>p2.eclipse-plugin,org.talend.studio</excludeGroupIds>
                   <!-- <stripVersion>true</stripVersion> -->
                 </configuration>
               </execution>

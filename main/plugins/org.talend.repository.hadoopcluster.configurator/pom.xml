@@ -152,6 +152,7 @@
                             <includeGroupIds>
                                 org.apache.geronimo.specs,javax.annotation,com.cloudera.api.swagger,io.swagger,com.google.code.gson,com.squareup.okhttp,com.squareup.okio,joda-time,com.sun.xml.bind,com.fasterxml.jackson.jaxrs,com.fasterxml.jackson.module,org.jetbrains,org.hamcrest
                             </includeGroupIds>
+			    <excludeGroupIds>p2.eclipse-plugin,org.talend.studio</excludeGroupIds>
 
                         </configuration>
                     </execution>
