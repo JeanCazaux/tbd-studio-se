@@ -274,7 +274,7 @@
                 MODULE="high-scale-lib-1.1.2.jar" MVN="mvn:org.talend.libraries/high-scale-lib-1.1.2/6.0.0" 
                 UrlPath="platform:/plugin/org.talend.libraries.apache.cassandra/lib/high-scale-lib-1.1.2.jar"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
-            <IMPORT NAME="snappy-java-1.1.10.1" MODULE="snappy-java-1.1.10.1.jar" MVN="mvn:org.xerial.snappy/snappy-java/1.1.10.1"
+            <IMPORT NAME="snappy-java-1.1.10.5" MODULE="snappy-java-1.1.10.5.jar" MVN="mvn:org.xerial.snappy/snappy-java/1.1.10.5"
                 REQUIRED_IF="DB_VERSION == 'CASSANDRA_2_0_0'" />
             <IMPORT
                 NAME="reporter-config-2.1.0"
