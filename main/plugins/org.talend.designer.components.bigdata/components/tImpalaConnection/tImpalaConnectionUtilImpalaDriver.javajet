@@ -258,7 +258,7 @@
 					if (securityIsEnabled) {
 %>
 							<% if(useKeytab) { %>
-							org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytab(<%=userPrincipal%>, <%=keytabPath%>);
+							org.apache.hadoop.security.UserGroupInformation ugi_<%=cid%> = org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytabAndReturnUGI(<%=userPrincipal%>, <%=keytabPath%>);
 							<% } %>
 							String krbServiceName_<%=cid%>  = (<%=impalaPrincipal%>.split("/")[0]);
 							String krbHostFQDN_<%=cid%> = (<%=impalaPrincipal%>.split("/")[1].split("@")[0]);
@@ -273,7 +273,6 @@
 														+ ";KrbHostFQDN=" + krbHostFQDN_<%=cid%>
 														+ ";KrbRealm=" + krbRealm_<%=cid%>;
 
-							org.apache.hadoop.security.UserGroupInformation ugi_<%=cid%> = org.apache.hadoop.security.UserGroupInformation.loginUserFromKeytabAndReturnUGI(<%=userPrincipal%>, <%=keytabPath%>);
 
 						    String url_<%=cid%> = "jdbc:impala://" + <%=dbhost%> + ":" + <%=dbport%> + "/" + <%=dbname%>+ "<%=logLevel%>" + urlKerberosParameter_<%=cid%>;                          
 <%

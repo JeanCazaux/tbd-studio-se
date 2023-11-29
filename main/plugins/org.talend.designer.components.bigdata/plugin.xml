@@ -329,12 +329,12 @@
 
        <libraryNeeded
                context="plugin:org.talend.designer.components.bigdata"
-               id="talend-bigdata-core-di-1.5.0.jar"
-               name="talend-bigdata-core-di-1.5.0.jar"
-               mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.5.0"/>
+               id="talend-bigdata-core-di-1.6.0.jar"
+               name="talend-bigdata-core-di-1.6.0.jar"
+               mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-core-di/1.6.0"/>
 
        <libraryNeededGroup description="Talend-bigdata-core-di group" id="TALEND_BIGDATA_CORE_DI_LIB" name="TALEND_BIGDATA_CORE_DI_LIB">
-            <library id="talend-bigdata-core-di-1.5.0.jar"/>
+            <library id="talend-bigdata-core-di-1.6.0.jar"/>
             <library id="guava-27.0-jre.jar"/>
        </libraryNeededGroup>
 

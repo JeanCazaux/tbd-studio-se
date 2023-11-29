@@ -30,15 +30,18 @@ int nb_line_<%=cid%> = 0;
 <% if (!thbaseOutput.isSpecifyNamespace()) { %>
 //set familyParametersList
 java.util.List<java.util.Map<String, String>> familyParameters = new java.util.ArrayList();
-java.util.Map map = new java.util.HashMap();
+java.util.Map map2 = null;
 <%
 for (Map map: thbaseOutput.getFamilyParameters()){
+%>
+    map2 = new java.util.HashMap();
+<%
     for (Map.Entry<String, String> entry : (Iterable<Map.Entry<String, String>>) map.entrySet()) {
 %>
-        map.put("<%=entry.getKey()%>",<%=entry.getValue()%>);
+        map2.put("<%=entry.getKey()%>",<%=entry.getValue()%>);
 <%
      } %>
-     familyParameters.add(map);
+     familyParameters.add(map2);
 <% }
 %>
 // table action
@@ -50,20 +53,23 @@ org.talend.bigdata.core.di.components.hbase.ImmutableTHbaseTable
 .tableName(<%=thbaseOutput.getTableName()%>)
 .tableAction("<%=thbaseOutput.getTableAction()%>")
 .addAllFamilyParameters(familyParameters)
-.createTableFunction(((tableName, admin, family)->{
+.regionSplitKeys("")
+.createTableFunction(((tableName, admin, families, regionSplitKeysByteArr)->{
         <% if (thbaseOutput.isHBase2x()){ %>
             org.apache.hadoop.hbase.client.TableDescriptorBuilder tableDesBuilder =
                     org.apache.hadoop.hbase.client.TableDescriptorBuilder.newBuilder(tableName);
-            tableDesBuilder.setColumnFamily(family);
+            for(org.apache.hadoop.hbase.HColumnDescriptor family: families){
+                    tableDesBuilder.setColumnFamily(family);
+            }
             org.apache.hadoop.hbase.client.TableDescriptor tableDes = tableDesBuilder.build();
-            admin.createTable(tableDes);
         <% } else { %>
             org.apache.hadoop.hbase.HTableDescriptor tableDes =
                     new org.apache.hadoop.hbase.HTableDescriptor(tableName);
-            tableDes.addFamily(family);
-            admin.createTable(tableDes);
+            for(org.apache.hadoop.hbase.HColumnDescriptor family: families){
+                    tableDes.addFamily(family);
+             }
         <% } %>
-
+            admin.createTable(tableDes);
 }))
 .build()
 .doTableAction();

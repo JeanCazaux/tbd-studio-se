@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plugin [
         <!ENTITY antlr4_version "4.9.3">
-        <!ENTITY avro_version "1.11.1">
+        <!ENTITY avro_version "1.11.3">
         <!ENTITY aws_sdk_version "1.12.566">
+        <!ENTITY bcpXXX-jdk18on_version "1.77">
         <!ENTITY commons-configuration2_version "2.8.0">
         <!ENTITY deltalake_version "2.4.0">
         <!ENTITY google_version "1.33.3">
         <!ENTITY google_http_version "1.41.7">
         <!ENTITY guava_version "32.0.1-jre">
-        <!ENTITY ivy_version "2.5.1">
+        <!ENTITY ivy_version "2.5.2">
         <!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
         <!ENTITY jackson_version "2.14.2">
-        <!ENTITY janino_version "3.1.9">
+        <!ENTITY janino_version "3.1.10">
         <!ENTITY jersey_version "2.37">
         <!ENTITY json4s_version "3.7.0-M11">
         <!ENTITY kafka_version "3.4.0">
@@ -22,13 +23,14 @@
         <!ENTITY hbase_version "2.1.0">
         <!ENTITY httpclient_version "4.5.14">
         <!ENTITY httpcore_version "4.4.16">
-        <!ENTITY parquet_version "1.12.3">
         <!ENTITY scala_version "2.12">
         <!ENTITY snakeyaml_version "1.33">
         <!ENTITY spark_version "3.4.1">
         <!ENTITY snowflake-jdbc_version "3.13.29">
-        <!ENTITY netty_version "4.1.87.Final">
+        <!ENTITY netty_version "4.1.94.Final">
         <!ENTITY okio_version "3.4.0">
+        <!ENTITY parquet_version "1.13.1">
+        <!ENTITY wildfly-openssl-java_version "1.0.10.Final">
         <!ENTITY woodstox_version "6.4.0">
         <!ENTITY snappy-java_version "1.1.10.1">
         ]>
@@ -52,8 +54,8 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="aws-java-sdk-dynamodb-&aws_sdk_version;.jar" name="aws-java-sdk-dynamodb-&aws_sdk_version;.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-dynamodb/&aws_sdk_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="azure-data-lake-store-sdk-2.3.9.jar" name="azure-data-lake-store-sdk-2.3.9.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.3.9"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="azure-storage-7.0.0.jar" name="azure-storage-7.0.0.jar" mvn_uri="mvn:com.microsoft.azure/azure-storage/7.0.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="bcpkix-jdk15on-1.70.jar" name="bcpkix-jdk15on-1.70.jar" mvn_uri="mvn:org.bouncycastle/bcpkix-jdk15on/1.70"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="bcprov-jdk15on-1.70.jar" name="bcprov-jdk15on-1.70.jar" mvn_uri="mvn:org.bouncycastle/bcprov-jdk15on/1.70"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar" name="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar" mvn_uri="mvn:org.bouncycastle/bcpkix-jdk18on/&bcpXXX-jdk18on_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar" name="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar" mvn_uri="mvn:org.bouncycastle/bcprov-jdk18on/&bcpXXX-jdk18on_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="bigquery-connector-hadoop3-1.1.6-shaded" name="bigquery-connector-hadoop3-1.1.6-shaded.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="breeze_&scala_version;-2.1.0.jar" name="breeze_&scala_version;-2.1.0.jar" mvn_uri="mvn:org.scalanlp/breeze_&scala_version;/2.1.0"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="chill_&scala_version;-0.10.0.jar" name="chill_&scala_version;-0.10.0.jar" mvn_uri="mvn:com.twitter/chill_&scala_version;/0.10.0"/>
@@ -273,7 +275,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="stream-2.9.6.jar" name="stream-2.9.6.jar" mvn_uri="mvn:com.clearspring.analytics/stream/2.9.6"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="util-1.6.0.jar" name="util-1.6.0.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/util/1.6.0"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar" mvn_uri="mvn:com.univocity/univocity-parsers/2.9.1"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="wildfly-openssl-java-1.0.4.Final.jar" name="wildfly-openssl-java-1.0.4.Final.jar" mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/1.0.4.Final"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" name="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/&wildfly-openssl-java_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="woodstox-core-&woodstox_version;.jar" name="woodstox-core-&woodstox_version;.jar" mvn_uri="mvn:com.fasterxml.woodstox/woodstox-core/&woodstox_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="xbean-asm9-shaded-4.20.jar" name="xbean-asm9-shaded-4.20.jar" mvn_uri="mvn:org.apache.xbean/xbean-asm9-shaded/4.20"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark34x" id="zookeeper-3.6.2.jar" name="zookeeper-3.6.2.jar" mvn_uri="mvn:org.apache.zookeeper/zookeeper/3.6.2"/>
@@ -286,8 +288,8 @@
             <library id="arrow-vector-12.0.0.jar"/>
             <library id="avro-&avro_version;.jar"/>
             <library id="avro-mapred-&avro_version;.jar"/>
-            <library id="bcpkix-jdk15on-1.70.jar"/>
-            <library id="bcprov-jdk15on-1.70.jar"/>
+            <library id="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar"/>
+            <library id="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar"/>
             <library id="breeze_&scala_version;-2.1.0.jar"/>
             <library id="chill_&scala_version;-0.10.0.jar"/>
             <library id="chill-java-0.10.0.jar"/>
@@ -413,7 +415,6 @@
             <library id="stax2-api-4.2.1.jar"/>
             <library id="stream-2.9.6.jar"/>
             <library id="univocity-parsers-2.9.1.jar"/>
-            <library id="wildfly-openssl-java-1.0.4.Final.jar"/>
             <library id="woodstox-core-&woodstox_version;.jar"/>
             <library id="xbean-asm9-shaded-4.20.jar"/>
             <library id="zstd-jni-1.5.2-5.jar"/>
@@ -435,7 +436,7 @@
             <library id="jetty-util-9.3.24.v20180605.jar"/>
             <library id="hadoop-azure-datalake-&hadoop_version;.jar"/>
             <library id="hadoop-azure-&hadoop_version;.jar"/>
-            <library id="wildfly-openssl-java-1.0.4.Final.jar"/>
+            <library id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"/>
         </libraryNeededGroup>
 
         <!-- Google Storage group -->

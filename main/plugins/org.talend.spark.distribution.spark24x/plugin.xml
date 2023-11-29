@@ -9,13 +9,15 @@
 		<!ENTITY google_http_version "1.41.7">
 		<!ENTITY guava_version "27.0-jre">
 		<!ENTITY hive_version "2.3.8">
-		<!ENTITY ivy_version "2.5.1">
+		<!ENTITY ivy_version "2.5.2">
 		<!ENTITY jackson-databind_version "2.6.7.5">
 		<!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
 		<!ENTITY jackson_version "2.6.7">
+		<!ENTITY janino_version "3.0.16">
 		<!ENTITY jackson-module-scala_version "2.6.7.1">
 		<!ENTITY kafka_version "3.4.0">
 		<!ENTITY snowflake-jdbc_version "3.13.29">
+		<!ENTITY wildfly-openssl-java_version "1.0.10.Final">
 		<!ENTITY woodstox_version "6.4.0">
 		<!ENTITY snappy-java_version "1.1.10.1">
 		]>
@@ -133,10 +135,10 @@
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="breeze_2.11-0.13.2.jar" name="breeze_2.11-0.13.2.jar" mvn_uri="mvn:org.scalanlp/breeze_2.11/0.13.2"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="chill_2.11-0.9.3.jar" name="chill_2.11-0.9.3.jar" mvn_uri="mvn:com.twitter/chill_2.11/0.9.3"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="chill-java-0.9.3.jar" name="chill-java-0.9.3.jar" mvn_uri="mvn:com.twitter/chill-java/0.9.3"/>
-		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="commons-compiler-3.0.16.jar" name="commons-compiler-3.0.16.jar" mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.16"/>
+		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="commons-compiler-&janino_version;.jar" name="commons-compiler-&janino_version;.jar" mvn_uri="mvn:org.codehaus.janino/commons-compiler/&janino_version;"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="jackson-module-paranamer-&jackson_version;.jar" name="jackson-module-paranamer-&jackson_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-paranamer/&jackson_version;"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="jackson-module-scala_2.11-&jackson-module-scala_version;.jar" name="jackson-module-scala_2.11-&jackson-module-scala_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.module/jackson-module-scala_2.11/&jackson-module-scala_version;"/>
-		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="janino-3.0.16.jar" name="janino-3.0.16.jar" mvn_uri="mvn:org.codehaus.janino/janino/3.0.16"/>
+		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="janino-&janino_version;.jar" name="janino-&janino_version;.jar" mvn_uri="mvn:org.codehaus.janino/janino/&janino_version;"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="javax.servlet-api-3.1.0.jar" name="javax.servlet-api-3.1.0.jar" mvn_uri="mvn:javax.servlet/javax.servlet-api/3.1.0"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="jersey-container-servlet-core-2.22.2.jar" name="jersey-container-servlet-core-2.22.2.jar" mvn_uri="mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/2.22.2"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="jersey-server-2.22.2.jar" name="jersey-server-2.22.2.jar" mvn_uri="mvn:org.glassfish.jersey.core/jersey-server/2.22.2"/>
@@ -180,7 +182,8 @@
 
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="stax2-api-4.2.1.jar" name="stax2-api-4.2.1.jar" mvn_uri="mvn:org.codehaus.woodstox/stax2-api/4.2.1"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="woodstox-core-&woodstox_version;.jar" name="woodstox-core-&woodstox_version;.jar" mvn_uri="mvn:com.fasterxml.woodstox/woodstox-core/&woodstox_version;"/>
-		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="ivy-&ivy_version;.jar" name="ivy-&ivy_version;.jar" mvn_uri="mvn:org.apache.ivy/ivy/&ivy_version;"/>
+		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" name="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/&wildfly-openssl-java_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="ivy-&ivy_version;.jar" name="ivy-&ivy_version;.jar" mvn_uri="mvn:org.apache.ivy/ivy/&ivy_version;"/>
 
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="aws-java-sdk-bundle-&aws-java-sdk-bundle_version;.jar" name="aws-java-sdk-bundle-&aws-java-sdk-bundle_version;.jar" mvn_uri="mvn:com.amazonaws/aws-java-sdk-bundle/&aws-java-sdk-bundle_version;"/>
 		<libraryNeeded context="plugin:org.talend.spark.distribution.spark24x" id="talend-bigdata-aws-lib-1.1.0.jar" name="talend-bigdata-aws-lib-1.1.0.jar" mvn_uri="mvn:org.talend.bigdata.libs/talend-bigdata-aws-lib/1.1.0"/>
@@ -250,7 +253,7 @@
 			<library id="commons-cli-1.2.jar"/>
 			<library id="commons-codec-1.15.jar"/>
 			<library id="commons-collections-3.2.2.jar"/>
-			<library id="commons-compiler-3.0.16.jar"/>
+			<library id="commons-compiler-&janino_version;.jar"/>
 			<library id="commons-configuration-1.6.jar"/>
 			<library id="commons-configuration2-&commons-configuration2_version;.jar"/>
 			<library id="commons-io-&commons_io_version;.jar"/>
@@ -285,7 +288,7 @@
 			<library id="jackson-module-paranamer-&jackson_version;.jar"/>
 			<library id="jackson-module-scala_2.11-&jackson-module-scala_version;.jar"/>
 			<library id="jackson-xc-1.9.13.jar"/>
-			<library id="janino-3.0.16.jar"/>
+			<library id="janino-&janino_version;.jar"/>
 			<library id="javax.servlet-api-3.1.0.jar"/>
 			<library id="javax.ws.rs-api-2.0.1.jar"/>
 			<library id="jaxb-api-2.2.2.jar"/>
@@ -355,7 +358,7 @@
 			<library id="jetty-util-9.3.24.v20180605.jar"/>
 			<library id="hadoop-azure-datalake-3.2.4.jar"/>
 			<library id="azure-data-lake-store-sdk-2.2.9.jar"/>
-			<library id="wildfly-openssl-java-1.0.4.Final.jar"/>
+			<library id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"/>
 		</libraryNeededGroup>
 
 		<!-- Google Storage group -->

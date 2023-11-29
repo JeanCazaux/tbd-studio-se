@@ -2,6 +2,7 @@ package org.talend.designer.bigdata.di.components.thbase;
 
 import org.talend.designer.codegen.config.CodeGeneratorArgument;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -23,5 +24,8 @@ public class THbaseTable extends THbaseAbstract {
                 .map(m -> m.entrySet().stream()
                         .collect(Collectors.toMap(Map.Entry::getKey, p -> THbaseUtils.addQuotesIfNotContainContext(p.getValue()))))
                 .collect(Collectors.toList());
+    }
+    public String getRegionSplitKeys(){
+        return BigDataDIComponent.getParameter(node, "__SPLIT_REGIONS_KEYS__", "");
     }
 }

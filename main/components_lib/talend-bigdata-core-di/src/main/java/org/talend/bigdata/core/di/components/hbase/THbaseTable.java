@@ -5,6 +5,7 @@ import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.io.compress.Compression;
 import org.apache.hadoop.hbase.regionserver.BloomType;
+import org.apache.logging.log4j.Logger;
 import org.immutables.value.Value;
 import java.io.IOException;
 import java.util.*;
@@ -12,12 +13,14 @@ import java.util.*;
 @Value.Immutable
 @Value.Style(visibility = Value.Style.ImplementationVisibility.PUBLIC)
 public interface THbaseTable {
+    static final Logger LOG = org.apache.logging.log4j.LogManager.getLogger(THbaseTable.class);
     Connection connection();
     boolean isSpecifyNamespace();
     String namespaceName();
     String tableName();
     String tableAction();
     List<Map<String, String>> familyParameters();
+    String regionSplitKeys();
     CreateTableFunction createTableFunction();
 
     default void doTableAction() throws IOException {
@@ -34,21 +37,21 @@ public interface THbaseTable {
         switch (tableAction()) {
             case "CREATE_IF_NOT_EXISTS":
                 if (!admin.tableExists(tableName)) {
-                    createTableFunction().doCreateTable(tableName, admin, getColumnFamily());
+                    createTableFunction().doCreateTable(tableName, admin, getColumnFamilies(),convertRegionSplitKeys());
                 }
                 break;
             case "CREATE":
-                createTableFunction().doCreateTable(tableName, admin,getColumnFamily());
+                createTableFunction().doCreateTable(tableName, admin, getColumnFamilies(),convertRegionSplitKeys());
                 break;
             case "DROP_CREATE":
                 deleteTable(tableName, admin);
-                createTableFunction().doCreateTable(tableName, admin,getColumnFamily());
+                createTableFunction().doCreateTable(tableName, admin, getColumnFamilies(),convertRegionSplitKeys());
                 break;
             case "DROP_IF_EXISTS_AND_CREATE":
                 if (admin.tableExists(tableName)) {
                     deleteTable(tableName, admin);
                 }
-                createTableFunction().doCreateTable(tableName, admin,getColumnFamily());
+                createTableFunction().doCreateTable(tableName, admin, getColumnFamilies(),convertRegionSplitKeys());
                 break;
             case "DROP":
                 deleteTable(tableName, admin);
@@ -56,9 +59,10 @@ public interface THbaseTable {
         }
     }
 
-    default HColumnDescriptor getColumnFamily() {
-        HColumnDescriptor family = null;
+    default List<HColumnDescriptor> getColumnFamilies() {
+        List<HColumnDescriptor> descriptorList = new ArrayList<>();
         for (Map<String, String> map : familyParameters()) {
+            HColumnDescriptor family = null;
             String family_name = map.get("FAMILY_NAME");
             family = new HColumnDescriptor(family_name);
 
@@ -99,8 +103,23 @@ public interface THbaseTable {
             if(family_timetolive!=null && !"".equals(family_timetolive)){
                 family.setTimeToLive(Integer.parseInt(family_timetolive));
             }
+            descriptorList.add(family);
         }
-        return family;
+        return descriptorList;
+    }
+
+    default byte[][] convertRegionSplitKeys(){
+        if(regionSplitKeys()!=null && !regionSplitKeys().equals("")) {
+            LOG.info("SPLIT KEYS : "+regionSplitKeys());
+            String[] regSplitKeyArray = regionSplitKeys().split(",");
+            byte[][] byteArr = new byte[regSplitKeyArray.length][];
+            for (int i = 0; i < regSplitKeyArray.length; i++) {
+                byte[] b = regSplitKeyArray[i].getBytes();
+                byteArr[i] = b;
+            }
+            return byteArr;
+        }
+        return null;
     }
 
      default void deleteTable(TableName tableName, Admin admin) throws IOException {
@@ -111,7 +130,7 @@ public interface THbaseTable {
     }
 
     interface CreateTableFunction {
-        void doCreateTable(TableName tableName, Admin admin, HColumnDescriptor columnFamily) throws IOException;
+        void doCreateTable(TableName tableName, Admin admin, List<HColumnDescriptor> columnFamilies, byte[][] regionSplitKeysByteArr) throws IOException;
     }
 
 }

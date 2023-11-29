@@ -9,15 +9,17 @@
         <!ENTITY google_http_version "1.41.7">
         <!ENTITY guava_version "27.0-jre">
         <!ENTITY hive_version "2.3.8">	
-        <!ENTITY ivy_version "2.5.1">
+        <!ENTITY ivy_version "2.5.2">
         <!ENTITY jackson_databind_version "2.12.7.1">
         <!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
         <!ENTITY jackson_version "2.12.7">
+        <!ENTITY janino_version "3.0.16">
         <!ENTITY kafka_version "3.4.0">
         <!ENTITY scala_library_version "2.12.15">
         <!ENTITY scala_version "2.12">
         <!ENTITY snowflake-jdbc_version "3.13.29">
         <!ENTITY spark_version "3.0.0">
+        <!ENTITY wildfly-openssl-java_version "1.0.10.Final">
         <!ENTITY woodstox_version "6.4.0">
         <!ENTITY snappy-java_version "1.1.10.1">
         ]>
@@ -262,12 +264,12 @@
                        mvn_uri="mvn:org.antlr/antlr4-runtime/4.7.1"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark30x"
-                       id="janino-3.0.16.jar" name="janino-3.0.16.jar"
-                       mvn_uri="mvn:org.codehaus.janino/janino/3.0.16"/>
+                       id="janino-&janino_version;.jar" name="janino-&janino_version;.jar"
+                       mvn_uri="mvn:org.codehaus.janino/janino/&janino_version;"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark30x"
-                       id="commons-compiler-3.0.16.jar" name="commons-compiler-3.0.16.jar"
-                       mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.16"/>
+                       id="commons-compiler-&janino_version;.jar" name="commons-compiler-&janino_version;.jar"
+                       mvn_uri="mvn:org.codehaus.janino/commons-compiler/&janino_version;"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark30x"
                        id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar"
@@ -325,8 +327,8 @@
                        mvn_uri="mvn:org.apache.hadoop/hadoop-azure/3.2.4"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark30x"
-                       id="wildfly-openssl-java-1.0.4.Final.jar" name="wildfly-openssl-java-1.0.4.Final.jar"
-                       mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/1.0.4.Final"/>
+                       id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" name="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"
+                       mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/&wildfly-openssl-java_version;"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark30x"
                        id="azure-storage-7.0.0.jar" name="azure-storage-7.0.0.jar"
@@ -753,7 +755,7 @@
             <library id="chill-java-0.9.5.jar"/>
             <library id="commons-codec-1.15.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
-            <library id="commons-compiler-3.0.16.jar"/>
+            <library id="commons-compiler-&janino_version;.jar"/>
             <library id="commons-configuration2-&commons-configuration2_version;.jar"/>
             <library id="commons-io-&commons-io_version;.jar"/>
             <library id="commons-lang-2.6.jar"/>
@@ -786,7 +788,7 @@
             <library id="jackson-module-paranamer-&jackson_version;.jar"/>
             <library id="jackson-module-scala_2.12-&jackson_version;.jar"/>
             <library id="jakarta.ws.rs-api-2.1.6.jar"/>
-            <library id="janino-3.0.16.jar"/>
+            <library id="janino-&janino_version;.jar"/>
             <library id="javax.servlet-api-3.1.0.jar"/>
             <library id="jaxb-api-2.2.11.jar"/>
             <library id="jersey-container-servlet-core-2.30.jar"/>
@@ -855,7 +857,7 @@
             <library id="jetty-util-9.3.24.v20180605.jar"/>
             <library id="hadoop-azure-datalake-3.2.4.jar"/>
             <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
-            <library id="wildfly-openssl-java-1.0.4.Final.jar"/>
+            <library id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"/>
         </libraryNeededGroup>
 
         <!-- Google Storage group -->

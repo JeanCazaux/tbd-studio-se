@@ -144,7 +144,6 @@
                    REQUIRED="true" SHOW_IF="(TABLE_ACTION != 'DROP')">
             <ITEMS>
                 <ITEM NAME="FAMILY_NAME" FIELD="TEXT" />
-                <!-- check this list in tHbaseOutput component and TBD-14995
                 <ITEM NAME="FAMILY_INMEMORY" FIELD="CLOSED_LIST">
                     <ITEMS DEFAULT="NULL">
                         <ITEM NAME="NULL" VALUE="" />
@@ -187,8 +186,11 @@
                 <ITEM NAME="FAMILY_MAXVERSIONS" FIELD="TEXT" />
                 <ITEM NAME="FAMILY_SCOPE" FIELD="TEXT" />
                 <ITEM NAME="FAMILY_TIMETOLIVE" FIELD="TEXT" />
-                -->
             </ITEMS>
+        </PARAMETER>
+        <PARAMETER NAME="SPLIT_REGIONS_KEYS" FIELD="TEXT" NUM_ROW="90"
+                   SHOW_IF="(TABLE_ACTION != 'DROP')">
+            <DEFAULT>""</DEFAULT>
         </PARAMETER>
     </PARAMETERS>
 

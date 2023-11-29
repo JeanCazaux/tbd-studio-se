@@ -454,10 +454,6 @@
 				REQUIRED="false"
 				REQUIRED_IF="((USE_KRB=='true') AND (USE_JAVAAPI=='true') AND DISTRIB[DISTRIBUTION, DB_VERSION].doSupportKerberos[] AND (DISTRIBUTION!='CUSTOM'))" />
 
-			<IMPORT NAME="avro-mapred-1.5.4.jar" MODULE="avro-mapred-1.5.4.jar"
-				UrlPath="platform:/plugin/org.talend.libraries.apache/lib/avro-mapred-1.5.4.jar"
-				MVN="mvn:org.talend.libraries/avro-mapred-1.5.4/6.0.0"
-				REQUIRED_IF="(FILE_FORMAT=='avrofile' AND (USE_JAVAAPI == 'false' OR (USE_JAVAAPI == 'true' AND DISTRIB[DISTRIBUTION, DB_VERSION].doSupportOldImportMode[])))" />
 		</IMPORTS>
 	</CODEGENERATION>
 	<RETURNS>

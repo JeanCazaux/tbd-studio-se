@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plugin [
+		<!ENTITY avro_version "1.11.3">
         <!ENTITY aws_sdk_version "1.12.566">
+        <!ENTITY bcpXXX-jdk18on_version "1.77">
         <!ENTITY commons-configuration2_version "2.8.0">
         <!ENTITY deltalake_version "2.1.0">
         <!ENTITY google_version "1.33.3">
         <!ENTITY google_http_version "1.41.7">
         <!ENTITY guava_version "32.0.1-jre">
-        <!ENTITY ivy_version "2.5.1">
+        <!ENTITY impala_version "2.6.30.1036">
+        <!ENTITY ivy_version "2.5.2">
         <!ENTITY hbase_version "2.1.0">
         <!ENTITY hive_version "2.3.9">
         <!ENTITY jackson_databind_version "2.13.4.1">
         <!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
         <!ENTITY jackson_version "2.13.3">
+        <!ENTITY janino_version "3.0.16">
         <!ENTITY kafka_version "3.4.0">
         <!ENTITY scala_version "2.12">
         <!ENTITY spark_version "3.3.3">
         <!ENTITY snakeyaml_version "1.33">
         <!ENTITY snappy-java_version "1.1.10.1">
         <!ENTITY snowflake-jdbc_version "3.13.29">
-        <!ENTITY netty_version "4.1.68.Final">
+        <!ENTITY netty_version "4.1.94.Final">
         <!ENTITY okio_version "3.4.0">
+        <!ENTITY parquet_version "1.13.1">
+        <!ENTITY wildfly-openssl-java_version "1.0.10.Final">
         <!ENTITY woodstox_version "6.4.0">
         ]>
 <?eclipse version="3.4"?>
@@ -31,10 +37,10 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="antlr4-4.8.jar" name="antlr4-4.8.jar" mvn_uri="mvn:org.antlr/antlr4/4.8"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="antlr4-runtime-4.8.jar" name="antlr4-runtime-4.8.jar" mvn_uri="mvn:org.antlr/antlr4-runtime/4.8"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="aircompressor-0.21.jar" name="aircompressor-0.21.jar" mvn_uri="mvn:io.airlift/aircompressor/0.21"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="avro-1.11.0.jar" name="avro-1.11.0.jar" mvn_uri="mvn:org.apache.avro/avro/1.11.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="avro-mapred-1.11.0.jar" name="avro-mapred-1.11.0.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/1.11.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcpkix-jdk15on-1.70.jar" name="bcpkix-jdk15on-1.70.jar" mvn_uri="mvn:org.bouncycastle/bcpkix-jdk15on/1.70"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcprov-jdk15on-1.70.jar" name="bcprov-jdk15on-1.70.jar" mvn_uri="mvn:org.bouncycastle/bcprov-jdk15on/1.70"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="avro-&avro_version;.jar" name="avro-&avro_version;.jar" mvn_uri="mvn:org.apache.avro/avro/&avro_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="avro-mapred-&avro_version;.jar" name="avro-mapred-&avro_version;.jar" mvn_uri="mvn:org.apache.avro/avro-mapred/&avro_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar" name="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar" mvn_uri="mvn:org.bouncycastle/bcpkix-jdk18on/&bcpXXX-jdk18on_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar" name="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar" mvn_uri="mvn:org.bouncycastle/bcprov-jdk18on/&bcpXXX-jdk18on_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="breeze_2.12-1.2.jar" name="breeze_2.12-1.2.jar" mvn_uri="mvn:org.scalanlp/breeze_2.12/1.2"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="chill_2.12-0.10.0.jar" name="chill_2.12-0.10.0.jar" mvn_uri="mvn:com.twitter/chill_2.12/0.10.0"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="chill-java-0.10.0.jar" name="chill-java-0.10.0.jar" mvn_uri="mvn:com.twitter/chill-java/0.10.0"/>
@@ -42,7 +48,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-codec-1.15.jar" name="commons-codec-1.15.jar" mvn_uri="mvn:commons-codec/commons-codec/1.15"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-collections-3.2.2.jar" name="commons-collections-3.2.2.jar" mvn_uri="mvn:commons-collections/commons-collections/3.2.2"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-collections4-4.4.jar" name="commons-collections4-4.4.jar" mvn_uri="mvn:org.apache.commons/commons-collections4/4.4"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-compiler-3.0.16.jar" name="commons-compiler-3.0.16.jar" mvn_uri="mvn:org.codehaus.janino/commons-compiler/3.0.16"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-compiler-&janino_version;.jar" name="commons-compiler-&janino_version;.jar" mvn_uri="mvn:org.codehaus.janino/commons-compiler/&janino_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-configuration2-&commons-configuration2_version;.jar" name="commons-configuration2-&commons-configuration2_version;.jar" mvn_uri="mvn:org.apache.commons/commons-configuration2/&commons-configuration2_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-io-2.11.0.jar" name="commons-io-2.11.0.jar" mvn_uri="mvn:commons-io/commons-io/2.11.0"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="commons-lang-2.6.jar" name="commons-lang-2.6.jar" mvn_uri="mvn:commons-lang/commons-lang/2.6"/>
@@ -94,7 +100,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="htrace-core4-4.1.0-incubating.jar" name="htrace-core4-4.1.0-incubating.jar" mvn_uri="mvn:org.apache.htrace/htrace-core4/4.1.0-incubating"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="httpclient-4.5.13.jar" name="httpclient-4.5.13.jar" mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.13"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="httpcore-4.4.14.jar" name="httpcore-4.4.14.jar" mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.14"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="ImpalaJDBC42-2.6.17.1017.jar" name="ImpalaJDBC42-2.6.17.1017.jar" mvn_uri="mvn:Impala/ImpalaJDBC42/2.6.15.1017"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="ImpalaJDBC42-&impala_version;.jar" name="ImpalaJDBC42-&impala_version;.jar" mvn_uri="mvn:Impala/ImpalaJDBC42/&impala_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="ivy-&ivy_version;.jar" name="ivy-&ivy_version;.jar" mvn_uri="mvn:org.apache.ivy/ivy/&ivy_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jackson-annotations-&jackson_version;.jar" name="jackson-annotations-&jackson_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/&jackson_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jackson-core-&jackson_version;.jar" name="jackson-core-&jackson_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/&jackson_version;"/>
@@ -114,7 +120,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jakarta.ws.rs-api-2.1.6.jar" name="jakarta.ws.rs-api-2.1.6.jar" mvn_uri="mvn:jakarta.ws.rs/jakarta.ws.rs-api/2.1.6"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jakarta.xml.bind-api-2.3.2.jar" name="jakarta.xml.bind-api-2.3.2.jar" mvn_uri="mvn:jakarta.xml.bind/jakarta.xml.bind-api/2.3.2"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="javax.servlet-api-3.1.0.jar" name="javax.servlet-api-3.1.0.jar" mvn_uri="mvn:javax.servlet/javax.servlet-api/3.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="janino-3.0.16.jar" name="janino-3.0.16.jar" mvn_uri="mvn:org.codehaus.janino/janino/3.0.16"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="janino-&janino_version;.jar" name="janino-&janino_version;.jar" mvn_uri="mvn:org.codehaus.janino/janino/&janino_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jersey-client-2.34.jar" name="jersey-client-2.34.jar" mvn_uri="mvn:org.glassfish.jersey.containers/jersey-client/2.34"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jersey-common-2.34.jar" name="jersey-common-2.34.jar" mvn_uri="mvn:org.glassfish.jersey.containers/jersey-common/2.34"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jersey-container-servlet-core-2.34.jar" name="jersey-container-servlet-core-2.34.jar" mvn_uri="mvn:org.glassfish.jersey.containers/jersey-container-servlet-core/2.34"/>
@@ -187,12 +193,12 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="orc-mapreduce-1.7.4.jar" name="orc-mapreduce-1.7.4.jar" mvn_uri="mvn:org.apache.orc/orc-mapreduce/1.7.4"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="orc-shims-1.7.4.jar" name="orc-shims-1.7.4.jar" mvn_uri="mvn:org.apache.orc/orc-shims/1.7.4"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="paranamer-2.8.jar" name="paranamer-2.8.jar" mvn_uri="mvn:com.thoughtworks.paranamer/paranamer/2.8"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-column-1.12.2.jar" name="parquet-column-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-column/1.12.2"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-common-1.12.2.jar" name="parquet-common-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-common/1.12.2"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-encoding-1.12.2.jar" name="parquet-encoding-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-encoding/1.12.2"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-format-structures-1.12.2.jar" name="parquet-format-structures-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-format-structures/1.12.2"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-hadoop-1.12.2.jar" name="parquet-hadoop-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-hadoop/1.12.2"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-jackson-1.12.2.jar" name="parquet-jackson-1.12.2.jar" mvn_uri="mvn:org.apache.parquet/parquet-jackson/1.12.2"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-column-&parquet_version;.jar" name="parquet-column-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-column/&parquet_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-common-&parquet_version;.jar" name="parquet-common-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-common/&parquet_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-encoding-&parquet_version;.jar" name="parquet-encoding-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-encoding/&parquet_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-format-structures-&parquet_version;.jar" name="parquet-format-structures-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-format-structures/&parquet_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-hadoop-&parquet_version;.jar" name="parquet-hadoop-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-hadoop/&parquet_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="parquet-jackson-&parquet_version;.jar" name="parquet-jackson-&parquet_version;.jar" mvn_uri="mvn:org.apache.parquet/parquet-jackson/&parquet_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="protobuf-java-3.19.6.jar" name="protobuf-java-3.19.6.jar" mvn_uri="mvn:com.google.protobuf/protobuf-java/3.19.6"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="py4j-0.10.9.5.jar" name="py4j-0.10.9.5.jar" mvn_uri="mvn:net.sf.py4j/py4j/0.10.9.5"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="re2j-1.1.jar" name="re2j-1.1.jar" mvn_uri="mvn:com.google.re2j/re2j/1.1"/>
@@ -221,7 +227,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="stax2-api-4.2.1.jar" name="stax2-api-4.2.1.jar" mvn_uri="mvn:org.codehaus.woodstox/stax2-api/4.2.1"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="stream-2.9.6.jar" name="stream-2.9.6.jar" mvn_uri="mvn:com.clearspring.analytics/stream/2.9.6"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="univocity-parsers-2.9.1.jar" name="univocity-parsers-2.9.1.jar" mvn_uri="mvn:com.univocity/univocity-parsers/2.9.1"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="wildfly-openssl-java-1.0.4.Final.jar" name="wildfly-openssl-java-1.0.4.Final.jar" mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/1.0.4.Final"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" name="wildfly-openssl-java-&wildfly-openssl-java_version;.jar" mvn_uri="mvn:org.wildfly.openssl/wildfly-openssl-java/&wildfly-openssl-java_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="woodstox-core-&woodstox_version;.jar" name="woodstox-core-&woodstox_version;.jar" mvn_uri="mvn:com.fasterxml.woodstox/woodstox-core/&woodstox_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="xbean-asm9-shaded-4.20.jar" name="xbean-asm9-shaded-4.20.jar" mvn_uri="mvn:org.apache.xbean/xbean-asm9-shaded/4.20"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="zookeeper-3.6.2.jar" name="zookeeper-3.6.2.jar" mvn_uri="mvn:org.apache.zookeeper/zookeeper/3.6.2"/>
@@ -284,17 +290,17 @@
         <libraryNeededGroup description="libraries required to compile job locally and to do the spark submit with only spark provided components" id="SPARK-COMPILE-GROUP-SPARK_3_3_x" name="SPARK-COMPILE-GROUP-SPARK_3_3_x">
             <library id="antlr4-4.8.jar"/>
             <library id="antlr4-runtime-4.8.jar"/>
-            <library id="avro-1.11.0.jar"/>
-            <library id="avro-mapred-1.11.0.jar"/>
-            <library id="bcpkix-jdk15on-1.70.jar"/>
-            <library id="bcprov-jdk15on-1.70.jar"/>
+            <library id="avro-&avro_version;.jar"/>
+            <library id="avro-mapred-&avro_version;.jar"/>
+            <library id="bcpkix-jdk18on-&bcpXXX-jdk18on_version;.jar"/>
+            <library id="bcprov-jdk18on-&bcpXXX-jdk18on_version;.jar"/>
             <library id="breeze_2.12-1.2.jar"/>
             <library id="chill_2.12-0.10.0.jar"/>
             <library id="chill-java-0.10.0.jar"/>
             <library id="commons-codec-1.15.jar"/>
             <library id="commons-collections-3.2.2.jar"/>
             <library id="commons-collections4-4.4.jar"/>
-            <library id="commons-compiler-3.0.16.jar"/>
+            <library id="commons-compiler-&janino_version;.jar"/>
             <library id="commons-configuration2-&commons-configuration2_version;.jar"/>
             <library id="commons-io-2.11.0.jar"/>
             <library id="commons-lang-2.6.jar"/>
@@ -331,7 +337,7 @@
             <library id="jakarta.ws.rs-api-2.1.6.jar"/>
             <library id="jakarta.xml.bind-api-2.3.2.jar"/>
             <library id="javax.servlet-api-3.1.0.jar"/>
-            <library id="janino-3.0.16.jar"/>
+            <library id="janino-&janino_version;.jar"/>
             <library id="jersey-container-servlet-core-2.34.jar"/>
             <library id="jersey-server-2.34.jar"/>
             <library id="jodd-core-5.0.5.jar"/>
@@ -380,12 +386,12 @@
             <library id="okio-&okio_version;.jar"/>
             <library id="oro-2.0.8.jar"/>
             <library id="paranamer-2.8.jar"/>
-            <library id="parquet-column-1.12.2.jar"/>
-            <library id="parquet-common-1.12.2.jar"/>
-            <library id="parquet-encoding-1.12.2.jar"/>
-            <library id="parquet-format-structures-1.12.2.jar"/>
-            <library id="parquet-hadoop-1.12.2.jar"/>
-            <library id="parquet-jackson-1.12.2.jar"/>
+            <library id="parquet-column-&parquet_version;.jar"/>
+            <library id="parquet-common-&parquet_version;.jar"/>
+            <library id="parquet-encoding-&parquet_version;.jar"/>
+            <library id="parquet-format-structures-&parquet_version;.jar"/>
+            <library id="parquet-hadoop-&parquet_version;.jar"/>
+            <library id="parquet-jackson-&parquet_version;.jar"/>
             <library id="protobuf-java-3.19.6.jar"/>
             <library id="py4j-0.10.9.5.jar"/>
             <library id="re2j-1.1.jar"/>
@@ -414,7 +420,6 @@
             <library id="stax2-api-4.2.1.jar"/>
             <library id="stream-2.9.6.jar"/>
             <library id="univocity-parsers-2.9.1.jar"/>
-            <library id="wildfly-openssl-java-1.0.4.Final.jar"/>
             <library id="woodstox-core-&woodstox_version;.jar"/>
             <library id="xbean-asm9-shaded-4.20.jar"/>
             <library id="zstd-jni-1.5.2-1.jar"/>
@@ -437,7 +442,7 @@
             <library id="jetty-util-9.3.24.v20180605.jar"/>
             <library id="hadoop-azure-datalake-3.2.4.jar"/>
             <library id="hadoop-azure-3.2.4.jar"/>
-            <library id="wildfly-openssl-java-1.0.4.Final.jar"/>
+            <library id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"/>
         </libraryNeededGroup>
 
         <!-- Google Storage group -->
@@ -500,7 +505,7 @@
 			<library id="hbase-zookeeper-&hbase_version;.jar"/>
 			<library id="hbase-zookeeper-&hbase_version;.jar"/>
 			<library id="htrace-core4-4.2.0-incubating.jar"/>
-			<library id="ImpalaJDBC42-2.6.17.1017.jar"/>
+			<library id="ImpalaJDBC42-&impala_version;.jar"/>
 			<library id="metrics-core-3.1.5.jar"/>
 			<library id="stax2-api-4.2.1.jar"/>
 			<library id="woodstox-core-&woodstox_version;.jar"/>
