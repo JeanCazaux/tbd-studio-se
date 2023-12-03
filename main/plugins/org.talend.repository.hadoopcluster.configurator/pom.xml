@@ -158,7 +158,5 @@
                 </executions>
             </plugin>
         </plugins>
-        <sourceDirectory>src</sourceDirectory>
-        <outputDirectory>bin</outputDirectory>
     </build>
 </project>
