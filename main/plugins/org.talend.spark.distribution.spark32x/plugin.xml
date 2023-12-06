@@ -2,6 +2,7 @@
 <!DOCTYPE plugin [
 		<!ENTITY avro_version "1.10.2">
         <!ENTITY aws_sdk_version "1.12.566">
+        <!ENTITY azure-data-lake-store-sdk_version "2.3.9">
         <!ENTITY bcpXXX-jdk18on_version "1.77">
         <!ENTITY commons-configuration2_version "2.8.0">
         <!ENTITY google_version "1.33.3">
@@ -13,7 +14,7 @@
         <!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
         <!ENTITY jackson_version "2.12.7">
         <!ENTITY janino_version "3.0.16">
-        <!ENTITY jetty_version "9.4.44.v20210927">
+        <!ENTITY jetty_version "9.3.24.v20180605">
         <!ENTITY kafka_version "3.4.0">
         <!ENTITY kubernetes_version "5.12.2">
         <!ENTITY okio_version "3.4.0">
@@ -237,7 +238,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="jetty-util-ajax-&jetty_version;.jar" name="jetty-util-ajax-&jetty_version;.jar" mvn_uri="mvn:org.eclipse.jetty/jetty-util-ajax/&jetty_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="jetty-util-&jetty_version;.jar" name="jetty-util-&jetty_version;.jar" mvn_uri="mvn:org.eclipse.jetty/jetty-util/&jetty_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hadoop-azure-datalake-&hadoop_version;.jar" name="hadoop-azure-datalake-&hadoop_version;.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-azure-datalake/&hadoop_version;"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="azure-data-lake-store-sdk-2.2.9.jar" name="azure-data-lake-store-sdk-2.2.9.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.9"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar" name="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/&azure-data-lake-store-sdk_version;"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="gcs-connector-hadoop3-2.1.6-shaded" name="gcs-connector-hadoop3-2.1.6-shaded.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded"/>
 
@@ -435,7 +436,7 @@
             <library id="jetty-util-ajax-&jetty_version;.jar"/>
             <library id="jetty-util-&jetty_version;.jar"/>
             <library id="hadoop-azure-datalake-&hadoop_version;.jar"/>
-            <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
+            <library id="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar"/>
             <library id="wildfly-openssl-java-&wildfly-openssl-java_version;.jar"/>
         </libraryNeededGroup>
 

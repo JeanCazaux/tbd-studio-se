@@ -2,6 +2,7 @@
 <!DOCTYPE plugin [
 		<!ENTITY avro_version "1.11.3">
         <!ENTITY aws_sdk_version "1.12.566">
+        <!ENTITY azure-data-lake-store-sdk_version "2.3.9">
         <!ENTITY bcpXXX-jdk18on_version "1.77">
         <!ENTITY commons-configuration2_version "2.8.0">
         <!ENTITY deltalake_version "2.1.0">
@@ -238,7 +239,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jetty-util-ajax-9.3.24.v20180605.jar" name="jetty-util-ajax-9.3.24.v20180605.jar" mvn_uri="mvn:org.eclipse.jetty/jetty-util-ajax/9.3.24.v20180605"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="jetty-util-9.3.24.v20180605.jar" name="jetty-util-9.3.24.v20180605.jar" mvn_uri="mvn:org.eclipse.jetty/jetty-util/9.3.24.v20180605"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="hadoop-azure-datalake-3.2.4.jar" name="hadoop-azure-datalake-3.2.4.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-azure-datalake/3.2.4"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="azure-data-lake-store-sdk-2.2.9.jar" name="azure-data-lake-store-sdk-2.2.9.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/2.2.9"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar" name="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar" mvn_uri="mvn:com.microsoft.azure/azure-data-lake-store-sdk/&azure-data-lake-store-sdk_version;"/>
 
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="gcs-connector-hadoop3-2.1.6-shaded" name="gcs-connector-hadoop3-2.1.6-shaded.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/gcs-connector/hadoop3-2.1.6/jar/shaded"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark33x" id="bigquery-connector-hadoop3-1.1.6-shaded" name="bigquery-connector-hadoop3-1.1.6-shaded.jar" mvn_uri="mvn:com.google.cloud.bigdataoss/bigquery-connector/hadoop3-1.1.6/jar/shaded"/>
@@ -436,7 +437,7 @@
         <!-- Please do not upgrade hadoop-azure-datalake libraries. Because CDP spark3 uses hadoop 3.1.1 version.
          The tAzureConfiguration component stopped working after the hadoop-azure-datalake upgrade. See TBD-15584-->
         <libraryNeededGroup description="Azure libraries for spark33x" id="AZURE-GROUP-SPARK_3_3_x" name="AZURE-GROUP-SPARK_3_3_x">
-            <library id="azure-data-lake-store-sdk-2.2.9.jar"/>
+            <library id="azure-data-lake-store-sdk-&azure-data-lake-store-sdk_version;.jar"/>
             <library id="azure-storage-7.0.0.jar"/>
             <library id="jetty-util-ajax-9.3.24.v20180605.jar"/>
             <library id="jetty-util-9.3.24.v20180605.jar"/>
