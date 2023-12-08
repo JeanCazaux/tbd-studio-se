@@ -9,6 +9,8 @@
         <!ENTITY google_http_version "1.41.7">
         <!ENTITY guava_version "27.0-jre">
         <!ENTITY hadoop_version "3.3.1">
+        <!ENTITY hbase_version "2.1.0">
+        <!ENTITY impala_version "2.6.30.1036">
         <!ENTITY ivy_version "2.5.2">
         <!ENTITY jackson_databind_version "2.12.7.1">
         <!ENTITY jackson-mapper-asl_version "1.9.14-atlassian-6">
@@ -75,22 +77,22 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hadoop-hdfs-client-&hadoop_version;.jar" name="hadoop-hdfs-client-&hadoop_version;.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-hdfs-client/&hadoop_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hadoop-shaded-guava-1.1.1.jar" name="hadoop-shaded-guava-1.1.1.jar" mvn_uri="mvn:org.apache.hadoop.thirdparty/hadoop-shaded-guava/1.1.1"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hadoop-yarn-server-web-proxy-&hadoop_version;.jar" name="hadoop-yarn-server-web-proxy-&hadoop_version;.jar" mvn_uri="mvn:org.apache.hadoop/hadoop-yarn-server-web-proxy/&hadoop_version;"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-client-2.1.0.jar" name="hbase-client-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-client/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-common-2.1.0.jar" name="hbase-common-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-common/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-hadoop-compat-2.1.0.jar" name="hbase-hadoop-compat-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hadoop-compat/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-hadoop2-compat-2.1.0.jar" name="hbase-hadoop2-compat-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-hadoop2-compat/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-http-2.1.0.jar" name="hbase-http-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-http/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-metrics-2.1.0.jar" name="hbase-metrics-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-metrics/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-metrics-api-2.1.0.jar" name="hbase-metrics-api-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-metrics-api/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-procedure-2.1.0.jar" name="hbase-procedure-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-procedure/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-protocol-2.1.0.jar" name="hbase-protocol-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-protocol/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-protocol-shaded-2.1.0.jar" name="hbase-protocol-shaded-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-protocol-shaded/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-replication-2.1.0.jar" name="hbase-replication-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-replication/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-server-2.1.0.jar" name="hbase-server-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-server/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-miscellaneous-2.1.0.jar" name="hbase-shaded-miscellaneous-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-miscellaneous/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-netty-2.1.0.jar" name="hbase-shaded-netty-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-netty/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-protobuf-2.1.0.jar" name="hbase-shaded-protobuf-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-protobuf/2.1.0"/>
-        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-zookeeper-2.1.0.jar" name="hbase-zookeeper-2.1.0.jar" mvn_uri="mvn:org.apache.hbase/hbase-zookeeper/2.1.0"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-client-&hbase_version;.jar" name="hbase-client-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-client/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-common-&hbase_version;.jar" name="hbase-common-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-common/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-hadoop-compat-&hbase_version;.jar" name="hbase-hadoop-compat-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hadoop-compat/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-hadoop2-compat-&hbase_version;.jar" name="hbase-hadoop2-compat-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-hadoop2-compat/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-http-&hbase_version;.jar" name="hbase-http-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-http/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-metrics-&hbase_version;.jar" name="hbase-metrics-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-metrics/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-metrics-api-&hbase_version;.jar" name="hbase-metrics-api-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-metrics-api/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-procedure-&hbase_version;.jar" name="hbase-procedure-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-procedure/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-protocol-&hbase_version;.jar" name="hbase-protocol-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-protocol/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-protocol-shaded-&hbase_version;.jar" name="hbase-protocol-shaded-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-protocol-shaded/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-replication-&hbase_version;.jar" name="hbase-replication-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-replication/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-server-&hbase_version;.jar" name="hbase-server-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-server/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-miscellaneous-&hbase_version;.jar" name="hbase-shaded-miscellaneous-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-miscellaneous/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-netty-&hbase_version;.jar" name="hbase-shaded-netty-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-netty/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-shaded-protobuf-&hbase_version;.jar" name="hbase-shaded-protobuf-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-shaded-protobuf/&hbase_version;"/>
+        <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hbase-zookeeper-&hbase_version;.jar" name="hbase-zookeeper-&hbase_version;.jar" mvn_uri="mvn:org.apache.hbase/hbase-zookeeper/&hbase_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hive-common-2.3.7.jar" name="hive-common-2.3.7.jar" mvn_uri="mvn:org.apache.hive/hive-common/2.3.7"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hive-cli-2.3.7.jar" name="hive-cli-2.3.7.jar" mvn_uri="mvn:org.apache.hive/hive-cli/2.3.7"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="hive-beeline-2.3.7.jar" name="hive-beeline-2.3.7.jar" mvn_uri="mvn:org.apache.hive/hive-beeline/2.3.7"/>
@@ -106,6 +108,7 @@
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="htrace-core4-4.1.0-incubating.jar" name="htrace-core4-4.1.0-incubating.jar" mvn_uri="mvn:org.apache.htrace/htrace-core4/4.1.0-incubating"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="httpclient-4.5.13.jar" name="httpclient-4.5.13.jar" mvn_uri="mvn:org.apache.httpcomponents/httpclient/4.5.13"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="httpcore-4.4.13.jar" name="httpcore-4.4.13.jar" mvn_uri="mvn:org.apache.httpcomponents/httpcore/4.4.13"/>
+		<libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="ImpalaJDBC42-&impala_version;.jar" name="ImpalaJDBC42-&impala_version;.jar" mvn_uri="mvn:Impala/ImpalaJDBC42/&impala_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="ivy-&ivy_version;.jar" name="ivy-&ivy_version;.jar" mvn_uri="mvn:org.apache.ivy/ivy/&ivy_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="jackson-annotations-&jackson_version;.jar" name="jackson-annotations-&jackson_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-annotations/&jackson_version;"/>
         <libraryNeeded context="plugin:org.talend.spark.distribution.spark32x" id="jackson-core-&jackson_version;.jar" name="jackson-core-&jackson_version;.jar" mvn_uri="mvn:com.fasterxml.jackson.core/jackson-core/&jackson_version;"/>
@@ -477,6 +480,35 @@
             <library id="spark-hive-thriftserver_&scala_version;-&spark_version;.jar"/>
         </libraryNeededGroup>
 
+		<!-- Impala group -->
+		<libraryNeededGroup description="Impala" id="IMPALA-GROUP-SPARK_3_2_x" name="IMPALA-GROUP-SPARK_3_2_x">
+			<group id="HIVE-GROUP-SPARK_3_2_x" />
+			<library id="commons-configuration2-&commons-configuration2_version;.jar"/>
+			<library id="commons-lang3-3.12.jar"/>
+			<library id="hbase-client-&hbase_version;.jar"/>
+			<library id="hbase-common-&hbase_version;.jar"/>
+			<library id="hbase-hadoop-compat-&hbase_version;.jar"/>
+			<library id="hbase-hadoop2-compat-&hbase_version;.jar"/>
+			<library id="hbase-http-&hbase_version;.jar"/>
+			<library id="hbase-metrics-&hbase_version;.jar"/>
+			<library id="hbase-metrics-api-&hbase_version;.jar"/>
+			<library id="hbase-procedure-&hbase_version;.jar"/>
+			<library id="hbase-protocol-&hbase_version;.jar"/>
+			<library id="hbase-protocol-shaded-&hbase_version;.jar"/>
+			<library id="hbase-replication-&hbase_version;.jar"/>
+			<library id="hbase-server-&hbase_version;.jar"/>
+			<library id="hbase-shaded-miscellaneous-&hbase_version;.jar"/>
+			<library id="hbase-shaded-netty-&hbase_version;.jar"/>
+			<library id="hbase-shaded-protobuf-&hbase_version;.jar"/>
+			<library id="hbase-zookeeper-&hbase_version;.jar"/>
+			<library id="hbase-zookeeper-&hbase_version;.jar"/>
+			<library id="htrace-core4-4.2.0-incubating.jar"/>
+			<library id="ImpalaJDBC42-&impala_version;.jar"/>
+			<library id="metrics-core-4.1.1.jar"/>
+			<library id="stax2-api-4.2.1.jar"/>
+			<library id="woodstox-core-&woodstox_version;.jar"/>
+		</libraryNeededGroup>
+
         <!-- DeltaLake group -->
         <libraryNeededGroup description="DeltaLake libraries for spark32x" id="DELTALAKE-GROUP-SPARK_3_2_x" name="DELTALAKE-GROUP-SPARK_3_2_x">
             <library id="delta-core_2.12-1.1.0.jar"/>
@@ -593,7 +625,7 @@
         </classloader>
         <classloader
                 index="HBASE:SPARK:SPARK_3_2_x"
-                libraries="hadoop-client-&hadoop_version;.jar;commons-configuration2-&commons-configuration2_version;.jar;htrace-core4-4.2.0-incubating.jar;metrics-core-3.1.5.jar;commons-lang3-3.12.jar;hbase-client-2.1.0.jar;hbase-common-2.1.0.jar;hbase-hadoop-compat-2.1.0.jar;hbase-hadoop2-compat-2.1.0.jar;hbase-http-2.1.0.jar;hbase-metrics-2.1.0.jar;hbase-metrics-api-2.1.0.jar;hbase-procedure-2.1.0.jar;hbase-protocol-2.1.0.jar;hbase-protocol-shaded-2.1.0.jar;hbase-replication-2.1.0.jar;hbase-server-2.1.0.jar;hbase-shaded-miscellaneous-2.1.0.jar;hbase-shaded-netty-2.1.0.jar;hbase-shaded-protobuf-2.1.0.jar;hbase-zookeeper-2.1.0.jar;zookeeper-3.4.10.jar;jackson-mapper-asl-&jackson-mapper-asl_version;.jar;curator-framework-2.13.0.jar;jackson-core-asl-1.9.13.jar;curator-client-2.13.0.jar;jersey-client-2.30.jar;jersey-common-2.30.jar;commons-io-2.8.jar;hive-metastore-2.3.7.jar;httpcore-4.4.13.jar;httpclient-4.5.13.jar;libthrift-0.14.0.jar;commons-cli-1.2.jar;commons-codec-1.15.jar;commons-collections-3.2.2.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-&guava_version;.jar;hadoop-auth-&hadoop_version;.jar;hadoop-common-&hadoop_version;.jar;hadoop-hdfs-client-&hadoop_version;.jar;hadoop-mapreduce-client-common-&hadoop_version;.jar;hadoop-mapreduce-client-core-&hadoop_version;.jar;hadoop-mapreduce-client-jobclient-&hadoop_version;.jar;hadoop-yarn-api-&hadoop_version;.jar;hadoop-yarn-client-&hadoop_version;.jar;hadoop-yarn-common-&hadoop_version;.jar;hive-common-2.3.7.jar;hive-jdbc-2.3.7.jar;hive-metastore-2.3.7.jar;hive-serde-2.3.7.jar;hive-service-rpc-3.1.2.jar;hive-shims-2.3.7.jar;htrace-core4-4.1.0-incubating.jar;kerb-admin-1.0.0.jar;kerb-client-1.0.0.jar;kerb-common-1.0.0.jar;kerb-core-1.0.0.jar;kerb-crypto-1.0.0.jar;kerb-identity-1.0.0.jar;kerb-server-1.0.0.jar;kerb-simplekdc-1.0.0.jar;kerb-util-1.0.0.jar;kerby-asn1-1.0.0.jar;kerby-config-1.0.0.jar;kerby-pkix-1.0.0.jar;kerby-util-1.0.0.jar;kerby-xdr-1.0.0.jar;reload4j-1.2.22.jar;protobuf-java-3.19.6.jar;slf4j-api-1.7.25.jar;stax2-api-4.2.1.jar;woodstox-core-&woodstox_version;.jar">
+                libraries="hadoop-client-&hadoop_version;.jar;commons-configuration2-&commons-configuration2_version;.jar;htrace-core4-4.2.0-incubating.jar;metrics-core-4.1.1.jar;commons-lang3-3.12.jar;hbase-client-&hbase_version;.jar;hbase-common-&hbase_version;.jar;hbase-hadoop-compat-&hbase_version;.jar;hbase-hadoop2-compat-&hbase_version;.jar;hbase-http-&hbase_version;.jar;hbase-metrics-&hbase_version;.jar;hbase-metrics-api-&hbase_version;.jar;hbase-procedure-&hbase_version;.jar;hbase-protocol-&hbase_version;.jar;hbase-protocol-shaded-&hbase_version;.jar;hbase-replication-&hbase_version;.jar;hbase-server-&hbase_version;.jar;hbase-shaded-miscellaneous-&hbase_version;.jar;hbase-shaded-netty-&hbase_version;.jar;hbase-shaded-protobuf-&hbase_version;.jar;hbase-zookeeper-&hbase_version;.jar;zookeeper-3.4.10.jar;jackson-mapper-asl-&jackson-mapper-asl_version;.jar;curator-framework-2.13.0.jar;jackson-core-asl-1.9.13.jar;curator-client-2.13.0.jar;jersey-client-2.30.jar;jersey-common-2.30.jar;commons-io-2.8.jar;hive-metastore-2.3.7.jar;httpcore-4.4.13.jar;httpclient-4.5.13.jar;libthrift-0.14.0.jar;commons-cli-1.2.jar;commons-codec-1.15.jar;commons-collections-3.2.2.jar;commons-lang-2.6.jar;commons-logging-1.1.3.jar;guava-&guava_version;.jar;hadoop-auth-&hadoop_version;.jar;hadoop-common-&hadoop_version;.jar;hadoop-hdfs-client-&hadoop_version;.jar;hadoop-mapreduce-client-common-&hadoop_version;.jar;hadoop-mapreduce-client-core-&hadoop_version;.jar;hadoop-mapreduce-client-jobclient-&hadoop_version;.jar;hadoop-yarn-api-&hadoop_version;.jar;hadoop-yarn-client-&hadoop_version;.jar;hadoop-yarn-common-&hadoop_version;.jar;hive-common-2.3.7.jar;hive-jdbc-2.3.7.jar;hive-metastore-2.3.7.jar;hive-serde-2.3.7.jar;hive-service-rpc-3.1.2.jar;hive-shims-2.3.7.jar;htrace-core4-4.1.0-incubating.jar;kerb-admin-1.0.0.jar;kerb-client-1.0.0.jar;kerb-common-1.0.0.jar;kerb-core-1.0.0.jar;kerb-crypto-1.0.0.jar;kerb-identity-1.0.0.jar;kerb-server-1.0.0.jar;kerb-simplekdc-1.0.0.jar;kerb-util-1.0.0.jar;kerby-asn1-1.0.0.jar;kerby-config-1.0.0.jar;kerby-pkix-1.0.0.jar;kerby-util-1.0.0.jar;kerby-xdr-1.0.0.jar;reload4j-1.2.22.jar;protobuf-java-3.19.6.jar;slf4j-api-1.7.25.jar;stax2-api-4.2.1.jar;woodstox-core-&woodstox_version;.jar">
         </classloader>
         <classloader
                 index="MAP_REDUCE:SPARK:SPARK_3_2_x"

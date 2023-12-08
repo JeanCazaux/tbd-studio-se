@@ -387,4 +387,9 @@ public class Spark32xDistribution extends AbstractSparkDistribution
     public boolean doSupportUniversalSynapseMode() {
         return true;
     }
+
+    @Override
+    public boolean doSupportImpalaConnector() {
+        return true;
+    }
 }
