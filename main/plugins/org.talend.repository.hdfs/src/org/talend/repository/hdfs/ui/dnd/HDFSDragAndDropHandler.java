@@ -229,6 +229,14 @@ public class HDFSDragAndDropHandler extends AbstractDragAndDropServiceHandler {
                     hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_DIRECTORY));
         } else if (EHDFSRepositoryToComponent.KNOX_TIMEOUT.getRepositoryValue().equals(value)) {
             return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_KNOX_TIMEOUT);
+        } else if (EHDFSRepositoryToComponent.UNIV_STANDALONE_MASTER.getRepositoryValue().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_UNIV_STANDALONE_MASTER);
+        } else if (EHDFSRepositoryToComponent.UNIV_STANDALONE_CONFIGURE_EXEC.getRepositoryValue().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_UNIV_STANDALONE_CONFIGURE_EXEC);
+        } else if (EHDFSRepositoryToComponent.UNIV_STANDALONE_EXEC_MEMORY.getRepositoryValue().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_UNIV_STANDALONE_EXEC_MEMORY);
+        } else if (EHDFSRepositoryToComponent.UNIV_STANDALONE_EXEC_CORE.getRepositoryValue().equals(value)) {
+            return hcConnection.getParameters().get(ConnParameterKeys.CONN_PARA_KEY_UNIV_STANDALONE_EXEC_CORE);
         }
 
         return null;
