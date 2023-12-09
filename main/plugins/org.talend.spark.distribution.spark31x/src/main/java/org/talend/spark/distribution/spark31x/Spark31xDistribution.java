@@ -38,7 +38,6 @@ import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
 import org.talend.hadoop.distribution.constants.ModuleGroupName;
 import org.talend.hadoop.distribution.constants.SparkBatchConstant;
-import org.talend.hadoop.distribution.constants.SparkStreamingConstant;
 import org.talend.hadoop.distribution.constants.apache.ISparkDistribution;
 import org.talend.spark.distribution.spark31x.modulegroup.node.Spark31xNodeModuleGroup;
 
@@ -240,7 +239,7 @@ public class Spark31xDistribution extends AbstractSparkDistribution
 
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
-        return false;
+        return true;
     }
 
     @Override

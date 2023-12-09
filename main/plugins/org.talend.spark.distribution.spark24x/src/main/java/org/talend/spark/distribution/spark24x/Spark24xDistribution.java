@@ -243,7 +243,7 @@ public class Spark24xDistribution extends AbstractSparkDistribution
 
 	@Override
 	public boolean doSupportDynamicMemoryAllocation() {
-		return false;
+        return true;
 	}
 
 	@Override

@@ -16,11 +16,28 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-import org.talend.hadoop.distribution.*;
+
+import org.talend.hadoop.distribution.AbstractSparkDistribution;
 import org.talend.hadoop.distribution.ComponentType;
-import org.talend.hadoop.distribution.component.*;
+import org.talend.hadoop.distribution.DistributionModuleGroup;
+import org.talend.hadoop.distribution.EHadoopVersion;
+import org.talend.hadoop.distribution.EParquetPackagePrefix;
+import org.talend.hadoop.distribution.ESparkVersion;
+import org.talend.hadoop.distribution.ESqoopPackageName;
+import org.talend.hadoop.distribution.NodeComponentTypeBean;
+import org.talend.hadoop.distribution.component.HBaseComponent;
+import org.talend.hadoop.distribution.component.HCatalogComponent;
+import org.talend.hadoop.distribution.component.HDFSComponent;
+import org.talend.hadoop.distribution.component.HiveComponent;
+import org.talend.hadoop.distribution.component.HiveOnSparkComponent;
+import org.talend.hadoop.distribution.component.ImpalaComponent;
+import org.talend.hadoop.distribution.component.MRComponent;
+import org.talend.hadoop.distribution.component.SparkBatchComponent;
+import org.talend.hadoop.distribution.component.SparkStreamingComponent;
+import org.talend.hadoop.distribution.component.SqoopComponent;
 import org.talend.hadoop.distribution.condition.ComponentCondition;
-import org.talend.hadoop.distribution.constants.*;
+import org.talend.hadoop.distribution.constants.ModuleGroupName;
+import org.talend.hadoop.distribution.constants.SparkBatchConstant;
 import org.talend.hadoop.distribution.constants.apache.ISparkDistribution;
 import org.talend.spark.distribution.spark34x.modulegroup.node.Spark34xNodeModuleGroup;
 
@@ -237,7 +254,7 @@ public class Spark34xDistribution extends AbstractSparkDistribution
 
     @Override
     public boolean doSupportDynamicMemoryAllocation() {
-        return false;
+        return true;
     }
 
     @Override
